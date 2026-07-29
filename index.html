@@ -419,6 +419,29 @@
     .work-item h3 { margin: 0 0 6px; font-size: 22px; }
     .work-item p { margin: 0; color: var(--ink-soft); }
 
+    .english-project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .english-project-card {
+      min-height: 220px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+    }
+    .english-project-card .no {
+      color: var(--red);
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+    .english-project-card h3 { margin: 28px 0 10px; font-size: 25px; line-height: 1.2; }
+    .english-project-card p { margin: 0; color: var(--ink-soft); }
+
     .quote-block {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -518,6 +541,7 @@
       .identity-row { grid-template-columns: 1fr; gap: 4px; }
       .photo-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(4, 270px); }
       .photo:first-child, .photo:nth-child(4) { grid-column: auto; }
+      .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
       footer .shell { flex-direction: column; }
@@ -531,30 +555,31 @@
 <body>
   <div class="topline">
     <div class="shell">
-      <span><strong>DAFENG</strong> · PERSONAL FIELD NOTES</span>
-      <span>2026 EDITION · 成都 · AI产品 · 创业实践</span>
+      <span><strong id="topline-name">DAFENG</strong> · <span id="topline-title">PERSONAL FIELD NOTES</span></span>
+      <span id="topline-meta">2026 EDITION · 成都 · AI产品 · 创业实践</span>
     </div>
   </div>
 
   <header>
     <div class="shell nav">
-      <a class="brand" href="#top" aria-label="返回首页">
-        <div class="brand-mark">风</div>
+      <a class="brand" href="#top" aria-label="返回首页" id="brand-link">
+        <div class="brand-mark" id="brand-mark">风</div>
         <div class="brand-copy">
-          <b>大风｜熊云锋</b>
-          <span>AI APPLICATION ENTREPRENEUR</span>
+          <b id="brand-name">大风｜熊云锋</b>
+          <span id="brand-role">AI APPLICATION ENTREPRENEUR</span>
         </div>
       </a>
       <nav class="nav-links" aria-label="主导航">
-        <a href="#now">正在做</a>
-        <a href="#identity">身份地图</a>
-        <a href="#field">现场</a>
-        <a href="#cooperate">合作</a>
-        <a href="#contact">联系</a>
+        <a href="#now" data-nav-link="0">正在做</a>
+        <a href="#identity" data-nav-link="1">身份地图</a>
+        <a href="#field" data-nav-link="2">现场</a>
+        <a href="#cooperate" data-nav-link="3">合作</a>
+        <a href="#contact" data-nav-link="4">联系</a>
       </nav>
       <div class="mode-switch" aria-label="页面版本切换">
         <button type="button" data-mode-button="hi">认识大风</button>
         <button type="button" data-mode-button="work">合作版</button>
+        <button type="button" data-mode-button="en">EN</button>
       </div>
     </div>
   </header>
@@ -591,7 +616,7 @@
       </div>
     </section>
 
-    <div class="trust-strip">
+    <div class="trust-strip" data-audience="hi,work">
       <div class="shell trust-grid">
         <div class="trust-item"><b>产品 × 技术 × 商业</b><span>不是只讲工具，而是把事情做出来</span></div>
         <div class="trust-item"><b>线上内容与真实现场</b><span>公开分享、项目实践与长期记录</span></div>
@@ -600,7 +625,7 @@
       </div>
     </div>
 
-    <section id="now">
+    <section id="now" data-audience="hi,work">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">NOW / 2026</div><h2>2026，我正在做的事</h2></div>
@@ -625,7 +650,7 @@
       </div>
     </section>
 
-    <section id="identity">
+    <section id="identity" data-audience="hi,work">
       <div class="shell identity-map">
         <div class="identity-copy">
           <div class="eyebrow">IDENTITY MAP / 身份地图</div>
@@ -642,7 +667,7 @@
       </div>
     </section>
 
-    <section id="field">
+    <section id="field" data-audience="hi,work">
       <div class="shell">
         <div class="section-head">
           <div><div class="eyebrow">FIELD / 真实现场</div><h2>不是概念，是现场。</h2></div>
@@ -657,7 +682,7 @@
       </div>
     </section>
 
-    <section data-audience="hi,both" id="journey">
+    <section data-audience="hi" id="journey">
       <div class="shell quote-block">
         <blockquote>“我不想只做一个介绍自己多厉害的主页，而是留下一个仍在行动、仍在变化的真实入口。”</blockquote>
         <span>DAFENG AI SLOW JOURNEY · 大风AI慢游记</span>
@@ -682,7 +707,57 @@
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="interests" data-audience="en">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">OFF THE CLOCK / INTERESTS</div><h2>How I stay curious.</h2></div>
+          <p class="section-intro">My interests are less about collecting hobbies and more about learning how systems, strategy, and people behave over time.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div><div class="card-index">01 / HISTORY</div><h3>Reading History</h3><p>I enjoy reading history to understand how institutions evolve, how decisions compound, and how people respond when circumstances change.</p></div>
+            <div class="card-link">Long-term perspective →</div>
+          </article>
+          <article class="card">
+            <div><div class="card-index">02 / CHESS</div><h3>Playing Chess</h3><p>Chess keeps me attentive to structure, timing, trade-offs, and the consequences of every move.</p></div>
+            <div class="card-link">Strategy in motion →</div>
+          </article>
+          <article class="card">
+            <div><div class="card-index">03 / GUANDAN</div><h3>Playing Guandan</h3><p>A popular Chinese partnership card game that combines teamwork, signaling, adaptation, and a healthy dose of fun.</p></div>
+            <div class="card-link">Teamwork at the table →</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" data-audience="en">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">PROJECT COLLABORATION</div><h2>Where I can help.</h2></div>
+          <p class="section-intro">I work best where technology, resources, and execution need to come together. Start with the real constraint, then move the project forward.</p>
+        </div>
+        <div class="english-project-grid">
+          <article class="english-project-card">
+            <div class="no">01 / BUILD</div>
+            <div><h3>AI Coding & Data Analytics</h3><p>Rapid prototyping, AI-assisted development, workflow automation, and practical analysis that turns raw data into decisions.</p></div>
+          </article>
+          <article class="english-project-card">
+            <div class="no">02 / HARDWARE</div>
+            <div><h3>AI Hardware Supply Chain</h3><p>Connecting product requirements with hardware resources, supplier coordination, sourcing, and delivery considerations.</p></div>
+          </article>
+          <article class="english-project-card">
+            <div class="no">03 / TALENT</div>
+            <div><h3>AI Developer Matching</h3><p>Connecting projects with suitable AI engineers and development talent based on scope, technical needs, and working style.</p></div>
+          </article>
+          <article class="english-project-card">
+            <div class="no">04 / DELIVERY</div>
+            <div><h3>Project Execution</h3><p>Turning an idea into an actionable plan, aligning stakeholders, removing blockers, and keeping delivery moving toward a real outcome.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" data-audience="hi,work,en">
       <div class="shell contact-grid">
         <div>
           <div class="eyebrow" style="color:#F1C1B4">CONTACT / 联系</div>
@@ -694,12 +769,12 @@
           </div>
         </div>
         <div class="contact-card">
-          <div class="contact-row"><span>对外称呼</span><b>大风</b></div>
-          <div class="contact-row"><span>真实姓名</span><b>熊云锋</b></div>
-          <div class="contact-row"><span>所在城市</span><b>成都</b></div>
-          <div class="contact-row"><span>GitHub</span><b><a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a></b></div>
-          <div class="contact-row"><span>合作沟通</span><b>请附项目背景与目标</b></div>
-          <div class="contact-row"><span>内容栏目</span><b>大风AI慢游记</b></div>
+          <div class="contact-row"><span data-contact-label="0">对外称呼</span><b data-contact-value="0">大风</b></div>
+          <div class="contact-row"><span data-contact-label="1">真实姓名</span><b data-contact-value="1">熊云锋</b></div>
+          <div class="contact-row"><span data-contact-label="2">所在城市</span><b data-contact-value="2">成都</b></div>
+          <div class="contact-row"><span data-contact-label="3">GitHub</span><b data-contact-value="3"><a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a></b></div>
+          <div class="contact-row"><span data-contact-label="4">合作沟通</span><b data-contact-value="4">请附项目背景与目标</b></div>
+          <div class="contact-row"><span data-contact-label="5">内容栏目</span><b data-contact-value="5">大风AI慢游记</b></div>
         </div>
       </div>
     </section>
@@ -707,8 +782,8 @@
 
   <footer>
     <div class="shell">
-      <span>© <span id="year"></span> 大风｜熊云锋</span>
-      <span>2026 持续迭代 · 人是大风 · 内容是慢游记 · 产品是工具蛙</span>
+      <span>© <span id="year"></span> <span id="footer-name">大风｜熊云锋</span></span>
+      <span id="footer-note">2026 持续迭代 · 人是大风 · 内容是慢游记 · 产品是工具蛙</span>
     </div>
   </footer>
 
@@ -747,11 +822,80 @@
         stamp: 'AI NATIVE<br>PRODUCT<br>BUILDER',
         contactTitle: '先说问题，再谈方案。',
         contactCopy: '合作沟通时，请带上业务背景、目标用户、当前流程、已使用工具和希望达到的结果。我会先判断是否值得做、应该怎么做。'
+      },
+      en: {
+        kicker: 'HELLO, I’M VENTUS',
+        title: 'Curious about the past.<br><span class="accent">Building with AI today.</span>',
+        lead: 'I’m <b>Ventus</b>, an AI builder and project operator based in Chengdu. I connect technology, people, and execution to move practical projects from an idea toward a working result.',
+        primary: 'Explore my interests',
+        primaryHref: '#interests',
+        secondary: 'Discuss a project',
+        secondaryHref: '#projects',
+        image: 'assets/formal-profile.jpg',
+        alt: 'Portrait of Ventus',
+        portraitTitle: 'Ventus · Xiong Yunfeng',
+        portraitSubtitle: 'Curiosity, collaboration, and execution',
+        stamp: 'VENTUS<br>AI BUILDER<br>CHENGDU',
+        contactTitle: 'Let’s start with the real problem.',
+        contactCopy: 'If you have a project involving AI development, data, hardware resources, technical talent, or delivery, send me the context, goal, current constraint, and expected timeline.',
+        notes: ['History reader', 'Chess player', 'Guandan player', 'AI project builder']
+      }
+    };
+
+    const ui = {
+      zh: {
+        lang: 'zh-CN',
+        toplineName: 'DAFENG',
+        toplineTitle: 'PERSONAL FIELD NOTES',
+        toplineMeta: '2026 EDITION · 成都 · AI产品 · 创业实践',
+        brandMark: '风',
+        brandName: '大风｜熊云锋',
+        brandRole: 'AI APPLICATION ENTREPRENEUR',
+        brandLabel: '返回首页',
+        nav: [
+          ['正在做', '#now'],
+          ['身份地图', '#identity'],
+          ['现场', '#field'],
+          ['合作', '#cooperate'],
+          ['联系', '#contact']
+        ],
+        copyLink: '复制当前版本链接',
+        copyIntro: '复制一段介绍',
+        copyTemplate: '复制合作沟通模板',
+        footerName: '大风｜熊云锋',
+        footerNote: '2026 持续迭代 · 人是大风 · 内容是慢游记 · 产品是工具蛙',
+        contactLabels: ['对外称呼', '真实姓名', '所在城市', 'GitHub', '合作沟通', '内容栏目'],
+        contactValues: ['大风', '熊云锋', '成都', '<a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a>', '请附项目背景与目标', '大风AI慢游记']
+      },
+      en: {
+        lang: 'en',
+        toplineName: 'VENTUS',
+        toplineTitle: 'PERSONAL FIELD NOTES',
+        toplineMeta: '2026 EDITION · CHENGDU · AI · PROJECTS',
+        brandMark: 'V',
+        brandName: 'Ventus',
+        brandRole: 'AI BUILDER & PROJECT OPERATOR',
+        brandLabel: 'Back to top',
+        nav: [
+          ['About', '#top'],
+          ['Interests', '#interests'],
+          ['Collaboration', '#projects'],
+          ['Contact', '#contact'],
+          ['GitHub', 'https://github.com/Frog1205']
+        ],
+        copyLink: 'Copy page link',
+        copyIntro: 'Copy introduction',
+        copyTemplate: 'Copy project brief',
+        footerName: 'Ventus｜Xiong Yunfeng',
+        footerNote: 'Curiosity · Collaboration · Execution',
+        contactLabels: ['Name', 'Chinese name', 'Based in', 'GitHub', 'Project brief', 'Focus'],
+        contactValues: ['Ventus', 'Xiong Yunfeng', 'Chengdu, China', '<a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a>', 'Context · Goal · Constraint · Timeline', 'AI · Data · Hardware · Delivery']
       }
     };
 
     const allAudience = [...document.querySelectorAll('[data-audience]')];
     const modeButtons = [...document.querySelectorAll('[data-mode-button]')];
+    const navLinks = [...document.querySelectorAll('[data-nav-link]')];
     const toast = document.getElementById('toast');
 
     function showToast(text) {
@@ -778,7 +922,9 @@
 
     function setMode(mode, updateHash = true) {
       const selected = content[mode] || content.hi;
+      const selectedUi = mode === 'en' ? ui.en : ui.zh;
       document.documentElement.dataset.mode = mode;
+      document.documentElement.lang = selectedUi.lang;
       modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.modeButton === mode));
 
       allAudience.forEach(el => {
@@ -805,36 +951,103 @@
       document.getElementById('hero-stamp').innerHTML = selected.stamp;
       document.getElementById('contact-title').textContent = selected.contactTitle;
       document.getElementById('contact-copy').textContent = selected.contactCopy;
+      document.getElementById('hero-note').innerHTML = (selected.notes || ['2026 持续更新', '大风AI慢游记', '工具蛙 Frog', 'AI创客家'])
+        .map(note => `<span>${note}</span>`).join('');
 
-      if (updateHash && location.hash !== '#' + mode) history.replaceState(null, '', '#' + mode);
-      document.title = mode === 'work' ? '和大风合作｜熊云锋' : '认识大风｜熊云锋';
+      document.getElementById('topline-name').textContent = selectedUi.toplineName;
+      document.getElementById('topline-title').textContent = selectedUi.toplineTitle;
+      document.getElementById('topline-meta').textContent = selectedUi.toplineMeta;
+      document.getElementById('brand-mark').textContent = selectedUi.brandMark;
+      document.getElementById('brand-name').textContent = selectedUi.brandName;
+      document.getElementById('brand-role').textContent = selectedUi.brandRole;
+      document.getElementById('brand-link').setAttribute('aria-label', selectedUi.brandLabel);
+      navLinks.forEach((link, index) => {
+        const [label, href] = selectedUi.nav[index];
+        link.textContent = label;
+        link.href = href;
+        if (href.startsWith('http')) {
+          link.target = '_blank';
+          link.rel = 'noopener';
+        } else {
+          link.removeAttribute('target');
+          link.removeAttribute('rel');
+        }
+      });
+      document.getElementById('copy-link').textContent = selectedUi.copyLink;
+      document.getElementById('copy-intro').textContent = selectedUi.copyIntro;
+      document.getElementById('copy-contact-template').textContent = selectedUi.copyTemplate;
+      document.getElementById('footer-name').textContent = selectedUi.footerName;
+      document.getElementById('footer-note').textContent = selectedUi.footerNote;
+      document.querySelectorAll('[data-contact-label]').forEach((el, index) => {
+        el.textContent = selectedUi.contactLabels[index];
+      });
+      document.querySelectorAll('[data-contact-value]').forEach((el, index) => {
+        el.innerHTML = selectedUi.contactValues[index];
+      });
+
+      if (updateHash) {
+        const nextUrl = new URL(location.href);
+        if (mode === 'en') {
+          nextUrl.searchParams.set('lang', 'en');
+          nextUrl.hash = 'en';
+        } else {
+          nextUrl.searchParams.delete('lang');
+          nextUrl.hash = mode;
+        }
+        history.replaceState(null, '', nextUrl);
+      }
+      document.title = mode === 'en'
+        ? 'Ventus｜AI Builder & Project Operator'
+        : mode === 'work'
+          ? '和大风合作｜熊云锋'
+          : '认识大风｜熊云锋';
     }
 
     modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.modeButton)));
 
     document.getElementById('copy-link').addEventListener('click', () => {
-      copyText(location.href, '当前版本链接已复制');
+      const isEnglish = document.documentElement.dataset.mode === 'en';
+      copyText(location.href, isEnglish ? 'Page link copied' : '当前版本链接已复制');
     });
 
     document.getElementById('copy-intro').addEventListener('click', () => {
       const mode = document.documentElement.dataset.mode || 'hi';
-      const intro = mode === 'work'
-        ? '这是大风（熊云锋），一名AI应用创业者和AI Native产品实践者，主要做AI产品、Agent、企业工作流与知识系统落地，也提供团队培训与项目陪跑。'
-        : '这是大风，本名熊云锋，一名在成都生活和创业的AI应用实践者。他做产品、参与真实项目，也通过「大风AI慢游记」记录AI、创业、城市和真实生活。';
-      copyText(intro, '个人介绍已复制');
+      const intro = mode === 'en'
+        ? 'Ventus is an AI builder and project operator based in Chengdu. He works across AI coding, data analytics, AI hardware supply chains, developer matching, and project execution.'
+        : mode === 'work'
+          ? '这是大风（熊云锋），一名AI应用创业者和AI Native产品实践者，主要做AI产品、Agent、企业工作流与知识系统落地，也提供团队培训与项目陪跑。'
+          : '这是大风，本名熊云锋，一名在成都生活和创业的AI应用实践者。他做产品、参与真实项目，也通过「大风AI慢游记」记录AI、创业、城市和真实生活。';
+      copyText(intro, mode === 'en' ? 'Introduction copied' : '个人介绍已复制');
     });
 
     document.getElementById('copy-contact-template').addEventListener('click', () => {
-      copyText('你好大风，我想和你聊一个合作。\n业务/项目背景：\n现在遇到的问题：\n希望达到的结果：\n已经尝试过的工具或方案：\n预期时间：', '合作沟通模板已复制');
+      const isEnglish = document.documentElement.dataset.mode === 'en';
+      const template = isEnglish
+        ? 'Hi Ventus, I would like to discuss a project.\nProject context:\nCurrent challenge:\nExpected outcome:\nResources or approaches already tried:\nExpected timeline:'
+        : '你好大风，我想和你聊一个合作。\n业务/项目背景：\n现在遇到的问题：\n希望达到的结果：\n已经尝试过的工具或方案：\n预期时间：';
+      copyText(template, isEnglish ? 'Project brief copied' : '合作沟通模板已复制');
     });
 
     window.addEventListener('hashchange', () => {
-      const mode = location.hash === '#work' ? 'work' : location.hash === '#hi' ? 'hi' : null;
+      const mode = new URLSearchParams(location.search).get('lang') === 'en' || location.hash === '#en'
+        ? 'en'
+        : location.hash === '#work'
+          ? 'work'
+          : location.hash === '#hi'
+            ? 'hi'
+            : null;
       if (mode) setMode(mode, false);
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
-    setMode(location.hash === '#work' ? 'work' : 'hi', false);
+    setMode(
+      new URLSearchParams(location.search).get('lang') === 'en' || location.hash === '#en'
+        ? 'en'
+        : location.hash === '#work'
+          ? 'work'
+          : 'hi',
+      false
+    );
   </script>
 </body>
 </html>
