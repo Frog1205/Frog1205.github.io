@@ -379,6 +379,29 @@
     }
     .book-cover img { width: 100%; height: 100%; object-fit: cover; background: white; }
 
+    .game-visuals {
+      min-height: 150px;
+      padding: 22px 8px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .game-visual {
+      width: 185px;
+      height: 140px;
+      flex: 0 0 auto;
+      object-fit: contain;
+      border: 1px solid rgba(23,23,23,.1);
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 16px 34px rgba(37,30,22,.16);
+      transition: transform .24s ease;
+    }
+    .game-visual:first-child { transform: rotate(-4deg); }
+    .game-visual:last-child { margin-left: -34px; transform: translateY(8px) rotate(4deg); }
+    .game-visuals:hover .game-visual:first-child { transform: translateX(-8px) rotate(-6deg); }
+    .game-visuals:hover .game-visual:last-child { transform: translate(8px, 2px) rotate(6deg); }
+
     .identity-map {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
@@ -597,6 +620,8 @@
       .reading-card { grid-template-columns: 1fr; min-height: 0; }
       .book-stack { min-height: 230px; padding: 24px 0 12px; }
       .book-cover { width: 105px; height: 155px; margin-left: -38px; }
+      .game-visual { width: 145px; height: 112px; }
+      .game-visual:last-child { margin-left: -26px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -783,7 +808,15 @@
             </div>
           </article>
           <article class="card">
-            <div><div class="card-index">02 / BOARD GAMES</div><h3>Go & Chinese Chess</h3><p>I play Go (Weiqi) and Chinese Chess (Xiangqi). Both sharpen my sense of structure, timing, trade-offs, and long-term strategy.</p></div>
+            <div>
+              <div class="card-index">02 / BOARD GAMES</div>
+              <h3>Go & Chinese Chess</h3>
+              <p>I play Go (Weiqi) and Chinese Chess (Xiangqi). Both sharpen my sense of structure, timing, trade-offs, and long-term strategy.</p>
+              <div class="game-visuals" aria-label="Go and Chinese chess boards">
+                <img class="game-visual" src="assets/go-board.png" alt="Go board position" loading="lazy" />
+                <img class="game-visual" src="assets/chinese-chess-board.png" alt="Chinese chess board" loading="lazy" />
+              </div>
+            </div>
             <div class="card-link">Strategy on the board →</div>
           </article>
           <article class="card">
