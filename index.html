@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="大风｜熊云锋的 2026 个人主页：AI应用创业、AI Native产品、企业AI落地、大风AI慢游记与工具蛙 Frog。" />
+  <meta name="theme-color" content="#F4F0E7" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="大风｜熊云锋 · AI应用创业者" />
+  <meta property="og:description" content="在真实世界里，让 AI 发生。记录 2026 年的产品、项目、创业实践与真实连接。" />
+  <meta property="og:url" content="https://frog1205.github.io/" />
+  <meta property="og:image" content="https://frog1205.github.io/assets/hero-work.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://frog1205.github.io/" />
+  <title>大风｜熊云锋 · 2026 个人主页</title>
+  <link rel="icon" href="assets/favicon.png" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "熊云锋",
+      "alternateName": "大风",
+      "url": "https://frog1205.github.io/",
+      "image": "https://frog1205.github.io/assets/formal-profile.jpg",
+      "jobTitle": "AI应用创业者",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "成都",
+        "addressCountry": "CN"
+      },
+      "sameAs": ["https://github.com/Frog1205"]
+    }
+  </script>
+  <style>
+    /*
+      CSS 配色体系：暖纸色 + 深墨色 + 克制蓝 + 现场红
+      适合真实摄影、独立杂志与产品档案，不采用常见蓝紫霓虹 AI 风。
+    */
+    :root {
+      --paper: #F4F0E7;
+      --paper-soft: #FBF9F4;
+      --ink: #171717;
+      --ink-soft: #52504B;
+      --blue: #214A86;
+      --blue-deep: #17345E;
+      --red: #D45A3D;
+      --red-soft: #F1D8CF;
+      --sage: #718071;
+      --line: #D8D0C3;
+      --white: #FFFDF8;
+      --shadow: 0 24px 70px rgba(37, 30, 22, .12);
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(212, 90, 61, .08), transparent 28rem),
+        radial-gradient(circle at 100% 28%, rgba(33, 74, 134, .09), transparent 34rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button { font: inherit; }
+
+    .shell { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+
+    .topline {
+      border-bottom: 1px solid rgba(23, 23, 23, .12);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .topline .shell {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topline strong { color: var(--blue); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(244, 240, 231, .86);
+      border-bottom: 1px solid rgba(23, 23, 23, .09);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--ink);
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .brand-copy { line-height: 1.2; }
+    .brand-copy b { display: block; font-size: 17px; letter-spacing: .03em; }
+    .brand-copy span { color: var(--ink-soft); font-size: 11px; letter-spacing: .13em; }
+
+    .nav-links { display: flex; align-items: center; gap: 26px; font-size: 14px; }
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 100%; bottom: -6px;
+      height: 2px;
+      background: var(--red);
+      transition: right .22s ease;
+    }
+    .nav-links a:hover::after { right: 0; }
+
+    .mode-switch {
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid rgba(23, 23, 23, .14);
+      border-radius: 999px;
+      background: rgba(255,255,255,.38);
+    }
+    .mode-switch button {
+      border: 0;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: transparent;
+      cursor: pointer;
+      transition: .2s ease;
+      white-space: nowrap;
+    }
+    .mode-switch button.active {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .hero { padding: 72px 0 48px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(360px, .96fr);
+      gap: 56px;
+      align-items: center;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue);
+      font-size: 13px;
+      letter-spacing: .12em;
+      font-weight: 750;
+      text-transform: uppercase;
+    }
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--red);
+    }
+    h1 {
+      margin: 20px 0 22px;
+      max-width: 720px;
+      font-size: clamp(48px, 7vw, 94px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 850;
+    }
+    h1 .accent { color: var(--blue); }
+    .hero-lead {
+      max-width: 660px;
+      color: var(--ink-soft);
+      font-size: clamp(17px, 2vw, 21px);
+    }
+    .hero-lead b { color: var(--ink); font-weight: 700; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      font-weight: 750;
+      font-size: 14px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(23,23,23,.13); }
+    .btn.primary { color: var(--white); background: var(--ink); }
+    .btn.secondary { background: rgba(255,255,255,.34); }
+    .btn.red { color: var(--white); border-color: var(--red); background: var(--red); }
+
+    .hero-note {
+      margin-top: 24px;
+      color: var(--ink-soft);
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+    }
+    .hero-note span::before { content: "•"; color: var(--red); margin-right: 8px; }
+
+    .portrait-wrap { position: relative; }
+    .portrait-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      background: var(--blue-deep);
+      aspect-ratio: 4 / 5;
+    }
+    .portrait-card img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transition: opacity .24s ease, transform .6s ease;
+    }
+    .portrait-card:hover img { transform: scale(1.025); }
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.42), transparent 45%);
+      pointer-events: none;
+    }
+    .portrait-caption {
+      position: absolute;
+      left: 22px; right: 22px; bottom: 20px;
+      z-index: 2;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+    }
+    .portrait-caption b { display: block; font-size: 17px; }
+    .portrait-caption span { font-size: 12px; opacity: .8; }
+    .portrait-number { font-size: 52px; font-weight: 850; line-height: .8; opacity: .7; }
+
+    .stamp {
+      position: absolute;
+      top: -22px;
+      right: -22px;
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      border: 1px solid rgba(23,23,23,.18);
+      background: var(--red-soft);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      transform: rotate(8deg);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: .08em;
+    }
+
+    .trust-strip {
+      margin: 14px 0 74px;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .trust-item b { display: block; font-size: 19px; }
+    .trust-item span { color: var(--ink-soft); font-size: 13px; }
+
+    section { padding: 76px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .eyebrow { color: var(--red); font-size: 12px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h2 {
+      margin: 8px 0 0;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.06;
+      letter-spacing: -.04em;
+    }
+    .section-intro { color: var(--ink-soft); font-size: 16px; max-width: 570px; justify-self: end; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      min-height: 320px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,253,248,.58);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: rgba(33,74,134,.3); }
+    .card-index { color: var(--red); font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+    .card h3 { margin: 18px 0 10px; font-size: 26px; line-height: 1.2; }
+    .card p { margin: 0; color: var(--ink-soft); }
+    .card-link { margin-top: 30px; font-weight: 800; font-size: 14px; color: var(--blue); }
+
+    .identity-map {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--ink);
+      color: var(--white);
+    }
+    .identity-copy { padding: clamp(32px, 6vw, 70px); }
+    .identity-copy p { color: rgba(255,255,255,.68); max-width: 600px; }
+    .identity-list { margin-top: 36px; display: grid; gap: 1px; background: rgba(255,255,255,.16); }
+    .identity-row {
+      padding: 18px 0;
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      background: var(--ink);
+    }
+    .identity-row b { color: #F7C7B9; }
+    .identity-row span { color: rgba(255,255,255,.78); }
+    .identity-avatar {
+      min-height: 540px;
+      background: var(--paper-soft);
+      display: grid;
+      place-items: end center;
+      overflow: hidden;
+    }
+    .identity-avatar img { width: min(100%, 520px); transform: translateY(10px); }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 320px 270px;
+      gap: 16px;
+    }
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: #ddd;
+    }
+    .photo:first-child { grid-row: 1 / 3; }
+    .photo:nth-child(4) { grid-column: 2 / 4; }
+    .photo img { height: 100%; object-fit: cover; transition: transform .55s ease; }
+    .photo:hover img { transform: scale(1.04); }
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.55), transparent 52%);
+    }
+    .photo figcaption {
+      position: absolute;
+      z-index: 2;
+      left: 18px; right: 18px; bottom: 15px;
+      color: white;
+      font-size: 13px;
+    }
+    .photo figcaption b { display: block; font-size: 17px; margin-bottom: 2px; }
+
+    .work-panel {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
+    }
+    .work-photo {
+      min-height: 560px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--blue-deep);
+    }
+    .work-photo img { height: 100%; object-fit: cover; object-position: center; }
+    .work-list {
+      border-radius: var(--radius-lg);
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      padding: 16px 34px;
+    }
+    .work-item {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+    }
+    .work-item:last-child { border-bottom: 0; }
+    .work-item .no { color: var(--red); font-weight: 850; }
+    .work-item h3 { margin: 0 0 6px; font-size: 22px; }
+    .work-item p { margin: 0; color: var(--ink-soft); }
+
+    .quote-block {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 74px 0;
+      text-align: center;
+    }
+    .quote-block blockquote {
+      margin: 0 auto;
+      max-width: 960px;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.25;
+      letter-spacing: -.035em;
+      font-weight: 760;
+    }
+    .quote-block span { display: block; margin-top: 20px; color: var(--ink-soft); font-size: 13px; letter-spacing: .12em; }
+
+    .contact {
+      padding: 90px 0;
+      color: var(--white);
+      background: var(--blue-deep);
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+    .contact h2 { margin-top: 0; }
+    .contact p { color: rgba(255,255,255,.72); max-width: 600px; }
+    .contact-card {
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      background: rgba(255,255,255,.06);
+    }
+    .contact-row { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.14); display: flex; justify-content: space-between; gap: 16px; }
+    .contact-row:last-child { border-bottom: 0; }
+    .contact-row span { color: rgba(255,255,255,.58); }
+    .contact-row b { text-align: right; }
+    .contact-row a { border-bottom: 1px solid rgba(255,255,255,.42); }
+    .contact-row a:hover { color: #F1C1B4; border-bottom-color: #F1C1B4; }
+    .contact-actions { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact .btn.secondary { color: white; border-color: rgba(255,255,255,.65); background: transparent; }
+
+    footer { color: rgba(255,255,255,.56); background: var(--blue-deep); border-top: 1px solid rgba(255,255,255,.14); }
+    footer .shell { padding: 26px 0; display: flex; justify-content: space-between; gap: 20px; font-size: 12px; }
+
+    [data-audience] { transition: opacity .18s ease; }
+    [data-audience].mode-hidden { display: none !important; }
+    .mobile-menu { display: none; }
+
+    .toast {
+      position: fixed;
+      left: 50%; bottom: 28px;
+      z-index: 50;
+      transform: translate(-50%, 18px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 11px 16px;
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(23,23,23,.94);
+      box-shadow: var(--shadow);
+      transition: .22s ease;
+      font-size: 13px;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 48px; }
+      .hero-grid, .section-head, .identity-map, .work-panel, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 40px; }
+      .portrait-wrap { max-width: 620px; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-grid { grid-template-columns: 1fr; }
+      .section-intro { justify-self: start; }
+      .identity-avatar { min-height: 420px; }
+      .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 360px 250px 250px; }
+      .photo:first-child { grid-column: 1 / 3; grid-row: auto; }
+      .photo:nth-child(4) { grid-column: 1 / 3; }
+      .work-photo { min-height: 420px; }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(calc(100% - 24px), var(--max)); }
+      .topline .shell { justify-content: center; }
+      .topline span:last-child { display: none; }
+      .nav { min-height: 66px; }
+      .brand-copy span { display: none; }
+      .mode-switch button { padding: 8px 10px; font-size: 12px; }
+      .hero { padding: 38px 0 24px; }
+      h1 { font-size: clamp(46px, 15vw, 70px); }
+      .hero-lead { font-size: 16px; }
+      .portrait-wrap { margin-top: 8px; }
+      .stamp { width: 88px; height: 88px; right: -4px; top: -18px; font-size: 10px; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .trust-item b { font-size: 16px; }
+      section { padding: 58px 0; }
+      .section-head { gap: 16px; }
+      .identity-copy { padding: 28px 22px; }
+      .identity-row { grid-template-columns: 1fr; gap: 4px; }
+      .photo-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(4, 270px); }
+      .photo:first-child, .photo:nth-child(4) { grid-column: auto; }
+      .work-list { padding: 6px 22px; }
+      .work-item { grid-template-columns: 40px 1fr; }
+      footer .shell { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="shell">
+      <span><strong>DAFENG</strong> · PERSONAL FIELD NOTES</span>
+      <span>2026 EDITION · 成都 · AI产品 · 创业实践</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <div class="brand-mark">风</div>
+        <div class="brand-copy">
+          <b>大风｜熊云锋</b>
+          <span>AI APPLICATION ENTREPRENEUR</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#now">正在做</a>
+        <a href="#identity">身份地图</a>
+        <a href="#field">现场</a>
+        <a href="#cooperate">合作</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <div class="mode-switch" aria-label="页面版本切换">
+        <button type="button" data-mode-button="hi">认识大风</button>
+        <button type="button" data-mode-button="work">合作版</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="kicker" id="hero-kicker">你好，我是大风</div>
+          <h1 id="hero-title">在真实世界里，<span class="accent">让 AI 发生。</span></h1>
+          <p class="hero-lead" id="hero-lead">
+            本名熊云锋，一名在成都生活和创业的 <b>AI应用实践者</b>。我做产品、参与项目、认识有意思的人，也通过「大风AI慢游记」记录AI如何进入真实生活与商业。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" id="hero-primary" href="#now">看看我最近在做什么</a>
+            <a class="btn secondary" id="hero-secondary" href="#contact">找我聊聊</a>
+            <button class="btn secondary" type="button" id="copy-link">复制当前版本链接</button>
+          </div>
+          <div class="hero-note" id="hero-note">
+            <span>2026 持续更新</span><span>大风AI慢游记</span><span>工具蛙 Frog</span><span>AI创客家</span>
+          </div>
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="portrait-card">
+            <img id="hero-image" src="assets/hero-hi.jpg" alt="大风在展览空间的生活照" />
+            <div class="portrait-caption">
+              <div><b id="portrait-title">真实生活中的大风</b><span id="portrait-subtitle">生活、创业与持续行动</span></div>
+              <div class="portrait-number">01</div>
+            </div>
+          </div>
+          <div class="stamp" id="hero-stamp">AI 应用<br/>创业者<br/>CHENGDU</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="shell trust-grid">
+        <div class="trust-item"><b>产品 × 技术 × 商业</b><span>不是只讲工具，而是把事情做出来</span></div>
+        <div class="trust-item"><b>线上内容与真实现场</b><span>公开分享、项目实践与长期记录</span></div>
+        <div class="trust-item"><b>人是“大风”</b><span>实名熊云锋，线下朋友常用称呼</span></div>
+        <div class="trust-item"><b>品牌各司其职</b><span>慢游记是内容，工具蛙是产品</span></div>
+      </div>
+    </div>
+
+    <section id="now">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">NOW / 2026</div><h2>2026，我正在做的事</h2></div>
+          <p class="section-intro" data-audience="hi,both">我不把自己锁在一个标签里，但所有工作都围绕同一个方向：从真实问题出发，让AI真正进入产品、项目、组织和生活。</p>
+          <p class="section-intro mode-hidden" data-audience="work">围绕AI Native产品、企业工作流和知识系统，我更关注“能不能落地、能不能持续运行、能不能产生价值”。</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div><div class="card-index">01 / BUILD</div><h3>AI Native 产品与 Agent</h3><p>从需求分析、PRD、原型、开发到迭代，探索适合个人创业者与200人以内团队的AI产品和Agent框架。</p></div>
+            <div class="card-link">产品实践 →</div>
+          </article>
+          <article class="card">
+            <div><div class="card-index">02 / NOTES</div><h3>大风AI慢游记</h3><p>记录AI工具、创业实验、城市观察、人物连接和真实生活。不追逐每一个热点，保留长期的判断和行动轨迹。</p></div>
+            <div class="card-link">内容栏目 →</div>
+          </article>
+          <article class="card">
+            <div><div class="card-index">03 / PROJECTS</div><h3>工具蛙与AI创客家</h3><p>工具蛙 Frog 面向AI工具与轻产品；AI创客家聚焦青少年AI创造、项目实践和真实作品。</p></div>
+            <div class="card-link">代表项目 →</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="identity">
+      <div class="shell identity-map">
+        <div class="identity-copy">
+          <div class="eyebrow">IDENTITY MAP / 身份地图</div>
+          <h2>四个名字，<br/>一条清晰主线。</h2>
+          <p>主页不把四个名称并列成四种人格，而是把它们放回正确层级，让新朋友一眼理解你是谁、你在做什么。</p>
+          <div class="identity-list">
+            <div class="identity-row"><b>大风</b><span>主要对外称呼，也是个人品牌。</span></div>
+            <div class="identity-row"><b>熊云锋</b><span>真实姓名，用于正式介绍、合作与履历。</span></div>
+            <div class="identity-row"><b>大风AI慢游记</b><span>长期内容栏目，记录AI、创业、城市与真实生活。</span></div>
+            <div class="identity-row"><b>工具蛙 Frog</b><span>AI工具、教程、工作流与轻产品品牌。</span></div>
+          </div>
+        </div>
+        <div class="identity-avatar"><img src="assets/avatar.png" alt="大风的卡通形象" /></div>
+      </div>
+    </section>
+
+    <section id="field">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">FIELD / 真实现场</div><h2>不是概念，是现场。</h2></div>
+          <p class="section-intro">公开表达、动手开发、认真记录、与人讨论。比起标准商务摆拍，这些画面更接近我真实工作的方式。</p>
+        </div>
+        <div class="photo-grid">
+          <figure class="photo"><img src="assets/talk-stage.jpg" alt="大风在通义时间成都站公开分享" /><figcaption><b>公开表达</b>通义时间 · 成都站</figcaption></figure>
+          <figure class="photo"><img src="assets/project-work.jpg" alt="大风在项目现场使用电脑" /><figcaption><b>动手做项目</b>把想法推进到可运行状态</figcaption></figure>
+          <figure class="photo"><img src="assets/field-notes.jpg" alt="大风在活动现场做笔记" /><figcaption><b>现场记录</b>观察、拆解与持续学习</figcaption></figure>
+          <figure class="photo"><img src="assets/slow-journey.jpg" alt="大风在成都户外交流" /><figcaption><b>慢游与连接</b>在城市、项目与人之间寻找真实问题</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section data-audience="hi,both" id="journey">
+      <div class="shell quote-block">
+        <blockquote>“我不想只做一个介绍自己多厉害的主页，而是留下一个仍在行动、仍在变化的真实入口。”</blockquote>
+        <span>DAFENG AI SLOW JOURNEY · 大风AI慢游记</span>
+      </div>
+    </section>
+
+    <section id="cooperate" data-audience="work">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">WORK WITH ME / 合作</div><h2>从问题，到可运行的系统。</h2></div>
+          <p class="section-intro">适合创业团队、200人以内企业与内部部门。先判断真正的问题，再决定应该用工具、工作流、知识库、Agent还是独立产品。</p>
+        </div>
+        <div class="work-panel">
+          <div class="work-photo"><img src="assets/consulting.jpg" alt="大风在项目讨论中进行讲解" /></div>
+          <div class="work-list">
+            <div class="work-item"><div class="no">01</div><div><h3>AI需求诊断与产品设计</h3><p>梳理业务问题、用户场景、工作流程和边界，形成可直接指导开发与实施的方案。</p></div></div>
+            <div class="work-item"><div class="no">02</div><div><h3>企业AI工作流与知识系统</h3><p>围绕真实岗位和项目建立工具链、知识库、自动化流程与使用规范。</p></div></div>
+            <div class="work-item"><div class="no">03</div><div><h3>Agent与AI Native产品开发</h3><p>从MVP到可持续迭代，关注权限、数据、交付、运营和商业化，而不只是完成Demo。</p></div></div>
+            <div class="work-item"><div class="no">04</div><div><h3>培训、陪跑与联合孵化</h3><p>针对团队的具体任务开展内容课、实操、答疑和项目陪跑，让AI真正进入日常工作。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="shell contact-grid">
+        <div>
+          <div class="eyebrow" style="color:#F1C1B4">CONTACT / 联系</div>
+          <h2 id="contact-title">认识之后，继续聊。</h2>
+          <p id="contact-copy">适合聊AI产品、创业实践、工具与工作流，也欢迎交换成都的活动、项目和有意思的人。</p>
+          <div class="contact-actions">
+            <button class="btn red" type="button" id="copy-intro">复制一段介绍</button>
+            <button class="btn secondary" type="button" id="copy-contact-template">复制合作沟通模板</button>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-row"><span>对外称呼</span><b>大风</b></div>
+          <div class="contact-row"><span>真实姓名</span><b>熊云锋</b></div>
+          <div class="contact-row"><span>所在城市</span><b>成都</b></div>
+          <div class="contact-row"><span>GitHub</span><b><a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a></b></div>
+          <div class="contact-row"><span>合作沟通</span><b>请附项目背景与目标</b></div>
+          <div class="contact-row"><span>内容栏目</span><b>大风AI慢游记</b></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>© <span id="year"></span> 大风｜熊云锋</span>
+      <span>2026 持续迭代 · 人是大风 · 内容是慢游记 · 产品是工具蛙</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
+
+  <script>
+    const content = {
+      hi: {
+        kicker: '你好，我是大风',
+        title: '在真实世界里，<span class="accent">让 AI 发生。</span>',
+        lead: '本名熊云锋，一名在成都生活和创业的 <b>AI应用实践者</b>。我做产品、参与项目、认识有意思的人，也通过「大风AI慢游记」记录AI如何进入真实生活与商业。',
+        primary: '看看我最近在做什么',
+        primaryHref: '#now',
+        secondary: '找我聊聊',
+        secondaryHref: '#contact',
+        image: 'assets/hero-hi.jpg',
+        alt: '大风在展览空间的生活照',
+        portraitTitle: '真实生活中的大风',
+        portraitSubtitle: '生活、创业与持续行动',
+        stamp: 'AI 应用<br>创业者<br>CHENGDU',
+        contactTitle: '认识之后，继续聊。',
+        contactCopy: '适合聊AI产品、创业实践、工具与工作流，也欢迎交换成都的活动、项目和有意思的人。'
+      },
+      work: {
+        kicker: '和大风合作',
+        title: '把 AI 变成<span class="accent">可运行的产品与业务。</span>',
+        lead: '<b>大风｜熊云锋</b>，AI应用创业者、AI Native产品实践者。围绕真实业务问题，完成需求诊断、产品设计、知识系统、Agent开发和团队陪跑。',
+        primary: '查看合作方向',
+        primaryHref: '#cooperate',
+        secondary: '看真实项目现场',
+        secondaryHref: '#field',
+        image: 'assets/hero-work.jpg',
+        alt: '大风在AI活动舞台上公开分享',
+        portraitTitle: '公开表达与行业现场',
+        portraitSubtitle: 'AI活动 · 项目实践 · 合作交流',
+        stamp: 'AI NATIVE<br>PRODUCT<br>BUILDER',
+        contactTitle: '先说问题，再谈方案。',
+        contactCopy: '合作沟通时，请带上业务背景、目标用户、当前流程、已使用工具和希望达到的结果。我会先判断是否值得做、应该怎么做。'
+      }
+    };
+
+    const allAudience = [...document.querySelectorAll('[data-audience]')];
+    const modeButtons = [...document.querySelectorAll('[data-mode-button]')];
+    const toast = document.getElementById('toast');
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    async function copyText(text, okText = '已复制') {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(okText);
+      } catch (e) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        textarea.remove();
+        showToast(okText);
+      }
+    }
+
+    function setMode(mode, updateHash = true) {
+      const selected = content[mode] || content.hi;
+      document.documentElement.dataset.mode = mode;
+      modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.modeButton === mode));
+
+      allAudience.forEach(el => {
+        const allowed = el.dataset.audience.split(',');
+        el.classList.toggle('mode-hidden', !allowed.includes(mode) && !allowed.includes('both'));
+      });
+
+      document.getElementById('hero-kicker').textContent = selected.kicker;
+      document.getElementById('hero-title').innerHTML = selected.title;
+      document.getElementById('hero-lead').innerHTML = selected.lead;
+      document.getElementById('hero-primary').textContent = selected.primary;
+      document.getElementById('hero-primary').href = selected.primaryHref;
+      document.getElementById('hero-secondary').textContent = selected.secondary;
+      document.getElementById('hero-secondary').href = selected.secondaryHref;
+      const heroImage = document.getElementById('hero-image');
+      heroImage.style.opacity = '0';
+      setTimeout(() => {
+        heroImage.src = selected.image;
+        heroImage.alt = selected.alt;
+        heroImage.style.opacity = '1';
+      }, 120);
+      document.getElementById('portrait-title').textContent = selected.portraitTitle;
+      document.getElementById('portrait-subtitle').textContent = selected.portraitSubtitle;
+      document.getElementById('hero-stamp').innerHTML = selected.stamp;
+      document.getElementById('contact-title').textContent = selected.contactTitle;
+      document.getElementById('contact-copy').textContent = selected.contactCopy;
+
+      if (updateHash && location.hash !== '#' + mode) history.replaceState(null, '', '#' + mode);
+      document.title = mode === 'work' ? '和大风合作｜熊云锋' : '认识大风｜熊云锋';
+    }
+
+    modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.modeButton)));
+
+    document.getElementById('copy-link').addEventListener('click', () => {
+      copyText(location.href, '当前版本链接已复制');
+    });
+
+    document.getElementById('copy-intro').addEventListener('click', () => {
+      const mode = document.documentElement.dataset.mode || 'hi';
+      const intro = mode === 'work'
+        ? '这是大风（熊云锋），一名AI应用创业者和AI Native产品实践者，主要做AI产品、Agent、企业工作流与知识系统落地，也提供团队培训与项目陪跑。'
+        : '这是大风，本名熊云锋，一名在成都生活和创业的AI应用实践者。他做产品、参与真实项目，也通过「大风AI慢游记」记录AI、创业、城市和真实生活。';
+      copyText(intro, '个人介绍已复制');
+    });
+
+    document.getElementById('copy-contact-template').addEventListener('click', () => {
+      copyText('你好大风，我想和你聊一个合作。\n业务/项目背景：\n现在遇到的问题：\n希望达到的结果：\n已经尝试过的工具或方案：\n预期时间：', '合作沟通模板已复制');
+    });
+
+    window.addEventListener('hashchange', () => {
+      const mode = location.hash === '#work' ? 'work' : location.hash === '#hi' ? 'hi' : null;
+      if (mode) setMode(mode, false);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    setMode(location.hash === '#work' ? 'work' : 'hi', false);
+  </script>
+</body>
+</html>
