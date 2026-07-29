@@ -379,9 +379,20 @@
     }
     .book-cover img { width: 100%; height: 100%; object-fit: cover; background: white; }
 
+    .games-card {
+      grid-column: 1 / -1;
+      min-height: 360px;
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      align-items: center;
+      gap: 30px;
+      overflow: hidden;
+    }
+    .games-card .games-copy { align-self: stretch; display: flex; flex-direction: column; }
+    .games-card .card-link { margin-top: auto; padding-top: 24px; }
     .game-visuals {
-      min-height: 150px;
-      padding: 22px 8px 8px;
+      min-height: 250px;
+      padding: 24px 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -397,10 +408,12 @@
       box-shadow: 0 16px 34px rgba(37,30,22,.16);
       transition: transform .24s ease;
     }
-    .game-visual:first-child { transform: rotate(-4deg); }
-    .game-visual:last-child { margin-left: -34px; transform: translateY(8px) rotate(4deg); }
-    .game-visuals:hover .game-visual:first-child { transform: translateX(-8px) rotate(-6deg); }
-    .game-visuals:hover .game-visual:last-child { transform: translate(8px, 2px) rotate(6deg); }
+    .game-visual:first-child { transform: translateY(8px) rotate(-7deg); }
+    .game-visual:nth-child(2) { margin-left: -42px; transform: translateY(-7px) rotate(-1deg); }
+    .game-visual:nth-child(3) { margin-left: -42px; transform: translateY(9px) rotate(7deg); }
+    .game-visuals:hover .game-visual:first-child { transform: translateX(-10px) rotate(-8deg); }
+    .game-visuals:hover .game-visual:nth-child(2) { transform: translateY(-13px) rotate(-1deg); }
+    .game-visuals:hover .game-visual:nth-child(3) { transform: translate(10px, 2px) rotate(8deg); }
 
     .identity-map {
       display: grid;
@@ -618,10 +631,12 @@
       .photo:first-child, .photo:nth-child(4) { grid-column: auto; }
       .interest-grid { grid-template-columns: 1fr; }
       .reading-card { grid-template-columns: 1fr; min-height: 0; }
+      .games-card { grid-template-columns: 1fr; min-height: 0; }
       .book-stack { min-height: 230px; padding: 24px 0 12px; }
       .book-cover { width: 105px; height: 155px; margin-left: -38px; }
-      .game-visual { width: 145px; height: 112px; }
-      .game-visual:last-child { margin-left: -26px; }
+      .game-visuals { min-height: 180px; padding: 22px 0 10px; }
+      .game-visual { width: 115px; height: 90px; }
+      .game-visual:nth-child(2), .game-visual:nth-child(3) { margin-left: -24px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -807,21 +822,20 @@
               <figure class="book-cover"><img src="assets/book-later-han.png" alt="Cover of the Book of the Later Han" loading="lazy" /></figure>
             </div>
           </article>
-          <article class="card">
-            <div>
-              <div class="card-index">02 / BOARD GAMES</div>
-              <h3>Go & Chinese Chess</h3>
-              <p>I play Go (Weiqi) and Chinese Chess (Xiangqi). Both sharpen my sense of structure, timing, trade-offs, and long-term strategy.</p>
-              <div class="game-visuals" aria-label="Go and Chinese chess boards">
-                <img class="game-visual" src="assets/go-board.png" alt="Go board position" loading="lazy" />
-                <img class="game-visual" src="assets/chinese-chess-board.png" alt="Chinese chess board" loading="lazy" />
+          <article class="card games-card">
+            <div class="games-copy">
+              <div>
+                <div class="card-index">02 / STRATEGY GAMES</div>
+                <h3>Go, Chinese Chess & Guandan Poker</h3>
+                <p>I enjoy three strategy games with different rhythms: Go (Weiqi) for long-term structure, Chinese Chess (Xiangqi) for tactical calculation, and Guandan Poker for partnership, signaling, and adaptation.</p>
               </div>
+              <div class="card-link">Strategy, tactics & teamwork →</div>
             </div>
-            <div class="card-link">Strategy on the board →</div>
-          </article>
-          <article class="card">
-            <div><div class="card-index">03 / GUANDAN POKER</div><h3>Playing Guandan Poker</h3><p>A popular Chinese partnership card game that combines teamwork, signaling, adaptation, and a healthy dose of fun.</p></div>
-            <div class="card-link">Teamwork at the table →</div>
+            <div class="game-visuals" aria-label="Go, Chinese chess, and Guandan Poker">
+              <img class="game-visual" src="assets/go-board.png" alt="Go board position" loading="lazy" />
+              <img class="game-visual" src="assets/chinese-chess-board.png" alt="Chinese chess board" loading="lazy" />
+              <img class="game-visual" src="assets/guandan-poker.png" alt="Playing cards representing Guandan Poker" loading="lazy" />
+            </div>
           </article>
         </div>
       </div>
@@ -935,7 +949,7 @@
         stamp: 'VENTUS<br>AI BUILDER<br>CHENGDU',
         contactTitle: 'Let’s start with the real problem.',
         contactCopy: 'If you have a project involving AI development, data, hardware resources, technical talent, or delivery, send me the context, goal, current constraint, and expected timeline.',
-        notes: ['Poetry, philosophy & history', 'Go & Chinese chess', 'Guandan Poker', 'AI project builder']
+        notes: ['Poetry, philosophy & history', 'Strategy games: Go, Xiangqi & Guandan Poker', 'AI project builder']
       }
     };
 
