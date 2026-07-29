@@ -327,6 +327,58 @@
     .card p { margin: 0; color: var(--ink-soft); }
     .card-link { margin-top: 30px; font-weight: 800; font-size: 14px; color: var(--blue); }
 
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .reading-card {
+      grid-column: 1 / -1;
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      align-items: center;
+      gap: 30px;
+      overflow: hidden;
+    }
+    .reading-card .reading-copy { align-self: stretch; display: flex; flex-direction: column; }
+    .reading-card .card-link { margin-top: auto; padding-top: 24px; }
+    .book-stack {
+      min-width: 0;
+      min-height: 310px;
+      padding: 32px 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .book-cover {
+      --r: 0deg;
+      --y: 0px;
+      position: relative;
+      width: 150px;
+      height: 220px;
+      flex: 0 0 auto;
+      margin: 0 0 0 -62px;
+      overflow: hidden;
+      border: 1px solid rgba(23,23,23,.1);
+      border-radius: 6px;
+      background: white;
+      box-shadow: 0 20px 42px rgba(37,30,22,.2);
+      transform: translateY(var(--y)) rotate(var(--r));
+      transform-origin: center bottom;
+      transition: transform .24s ease, box-shadow .24s ease;
+    }
+    .book-cover:first-child { margin-left: 0; --r: -8deg; --y: 10px; }
+    .book-cover:nth-child(2) { --r: -3deg; --y: -5px; }
+    .book-cover:nth-child(3) { --r: 4deg; --y: 4px; }
+    .book-cover:nth-child(4) { --r: 8deg; --y: -2px; }
+    .book-cover:hover {
+      z-index: 5;
+      transform: translateY(-16px) rotate(var(--r));
+      box-shadow: 0 28px 54px rgba(37,30,22,.28);
+    }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; background: white; }
+
     .identity-map {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
@@ -541,6 +593,10 @@
       .identity-row { grid-template-columns: 1fr; gap: 4px; }
       .photo-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(4, 270px); }
       .photo:first-child, .photo:nth-child(4) { grid-column: auto; }
+      .interest-grid { grid-template-columns: 1fr; }
+      .reading-card { grid-template-columns: 1fr; min-height: 0; }
+      .book-stack { min-height: 230px; padding: 24px 0 12px; }
+      .book-cover { width: 105px; height: 155px; margin-left: -38px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -713,10 +769,18 @@
           <div><div class="eyebrow">OFF THE CLOCK / INTERESTS</div><h2>How I stay curious.</h2></div>
           <p class="section-intro">My interests are less about collecting hobbies and more about learning how systems, strategy, and people behave over time.</p>
         </div>
-        <div class="card-grid">
-          <article class="card">
-            <div><div class="card-index">01 / READING</div><h3>Chinese Poetry, Philosophy & Global History</h3><p>I read Chinese poetry and philosophy for language, ideas, and inner perspective, and global history to understand how societies, institutions, and choices evolve over time.</p></div>
-            <div class="card-link">Ideas across time →</div>
+        <div class="interest-grid">
+          <article class="card reading-card">
+            <div class="reading-copy">
+              <div><div class="card-index">01 / READING</div><h3>Chinese Poetry, Philosophy & Global History</h3><p>I read Chinese poetry and philosophy for language, ideas, and inner perspective, and global history to understand how societies, institutions, and choices evolve over time.</p></div>
+              <div class="card-link">Ideas across time →</div>
+            </div>
+            <div class="book-stack" aria-label="A selection of books Ventus reads">
+              <figure class="book-cover"><img src="assets/book-su-dongpo.png" alt="Cover of The Gay Genius: The Life and Times of Su Tungpo" loading="lazy" /></figure>
+              <figure class="book-cover"><img src="assets/book-wanli-fifteen-years.png" alt="Cover of 1587, A Year of No Significance" loading="lazy" /></figure>
+              <figure class="book-cover"><img src="assets/book-mindfulness.png" alt="Cover of Mindfulness: A Practical Guide to Finding Peace in a Frantic World" loading="lazy" /></figure>
+              <figure class="book-cover"><img src="assets/book-later-han.png" alt="Cover of the Book of the Later Han" loading="lazy" /></figure>
+            </div>
           </article>
           <article class="card">
             <div><div class="card-index">02 / BOARD GAMES</div><h3>Go & Chinese Chess</h3><p>I play Go (Weiqi) and Chinese Chess (Xiangqi). Both sharpen my sense of structure, timing, trade-offs, and long-term strategy.</p></div>
