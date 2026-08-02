@@ -329,6 +329,70 @@
     .card p { margin: 0; color: var(--ink-soft); }
     .card-link { margin-top: 30px; font-weight: 800; font-size: 14px; color: var(--blue); }
 
+    .case-group + .case-group { margin-top: 54px; }
+    .case-group-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .case-group-head h3 { margin: 0; font-size: 28px; }
+    .case-group-head p { margin: 0; max-width: 560px; color: var(--ink-soft); }
+    .repo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .repo-card {
+      min-height: 250px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .repo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(33,74,134,.3); }
+    .repo-type { color: var(--red); font-size: 12px; font-weight: 850; letter-spacing: .12em; }
+    .repo-card h4 { margin: 20px 0 10px; font-size: 23px; line-height: 1.2; }
+    .repo-card p { margin: 0; color: var(--ink-soft); }
+    .repo-link { margin-top: 26px; color: var(--blue); font-size: 13px; font-weight: 800; overflow-wrap: anywhere; }
+
+    .miniapp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .miniapp-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+    }
+    .miniapp-visual {
+      height: 430px;
+      padding: 20px 20px 0;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      background: linear-gradient(145deg, rgba(33,74,134,.10), rgba(202,67,48,.07));
+    }
+    .miniapp-visual img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+    .miniapp-copy { padding: 22px; }
+    .miniapp-copy h4 { margin: 0 0 10px; font-size: 21px; line-height: 1.25; }
+    .miniapp-copy p { margin: 0; color: var(--ink-soft); }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .case-tags span {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(33,74,134,.08);
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .delivery-note {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--red);
+      background: rgba(255,253,248,.55);
+      color: var(--ink-soft);
+    }
+
     .interest-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -603,6 +667,9 @@
       .portrait-wrap { max-width: 620px; }
       .trust-grid { grid-template-columns: repeat(2, 1fr); }
       .card-grid { grid-template-columns: 1fr; }
+      .repo-grid { grid-template-columns: 1fr; }
+      .miniapp-grid { grid-template-columns: repeat(2, 1fr); }
+      .case-group-head { align-items: start; flex-direction: column; }
       .section-intro { justify-self: start; }
       .identity-avatar { min-height: 420px; }
       .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 360px 250px 250px; }
@@ -642,6 +709,8 @@
       .game-visuals { min-height: 180px; padding: 22px 0 10px; }
       .game-visual { width: 115px; height: 90px; }
       .game-visual:nth-child(2), .game-visual:nth-child(3) { margin-left: -24px; }
+      .miniapp-grid { grid-template-columns: 1fr; }
+      .miniapp-visual { height: 410px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -745,8 +814,84 @@
           </article>
           <article class="card">
             <div><div class="card-index">03 / PROJECTS</div><h3>工具蛙与AI创客家</h3><p>工具蛙 Frog 收集AI工具、教程和轻产品；AI创客家和青少年一起动手做AI作品。</p></div>
-            <div class="card-link">代表项目 →</div>
+            <a class="card-link" href="#tool-frog">查看AI工具蛙案例 →</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tool-frog" data-audience="hi,work">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="eyebrow">AI TOOL FROG / 案例</div><h2>把真实需求，<br/>做成可以运行的工具。</h2></div>
+          <p class="section-intro">AI工具蛙持续整理实用工具，也会把需求做成开源项目和小程序。这里展示的是已经有代码或运行页面的案例。</p>
+        </div>
+
+        <div class="case-group">
+          <div class="case-group-head">
+            <h3>GitHub 开源项目</h3>
+            <p>代码、说明和使用边界均可公开查看，适合直接了解项目思路和完成度。</p>
+          </div>
+          <div class="repo-grid">
+            <a class="repo-card" href="https://github.com/Frog1205/demand-evaluator" target="_blank" rel="noopener">
+              <div>
+                <div class="repo-type">01 / REQUIREMENT</div>
+                <h4>真实需求评估助手</h4>
+                <p>用于AI项目的售前初筛、关键追问、交付边界、MVP路径和风险判断。</p>
+              </div>
+              <div class="repo-link">Frog1205/demand-evaluator ↗</div>
+            </a>
+            <a class="repo-card" href="https://github.com/Frog1205/evaluate-deployment-options" target="_blank" rel="noopener">
+              <div>
+                <div class="repo-type">02 / DEPLOYMENT</div>
+                <h4>项目部署评估助手</h4>
+                <p>读取项目证据，比较静态托管、Serverless、容器、云服务器和数据库等部署方案。</p>
+              </div>
+              <div class="repo-link">Frog1205/evaluate-deployment-options ↗</div>
+            </a>
+            <a class="repo-card" href="https://github.com/Frog1205/agent-atlas" target="_blank" rel="noopener">
+              <div>
+                <div class="repo-type">03 / AGENT</div>
+                <h4>Agent 水平评测助手</h4>
+                <p>扫描本地AI Agent使用环境，从四个维度生成自托管的可视化评测报告。</p>
+              </div>
+              <div class="repo-link">Frog1205/agent-atlas ↗</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="case-group">
+          <div class="case-group-head">
+            <h3>小程序项目</h3>
+            <p>覆盖健康服务、产后管理和社区服务，包含前端交互、云开发能力与后端部署。</p>
+          </div>
+          <div class="miniapp-grid">
+            <article class="miniapp-card">
+              <div class="miniapp-visual"><img src="assets/miniapp-medical-agent.png" alt="医疗健康智能体问诊小程序界面" loading="lazy" /></div>
+              <div class="miniapp-copy">
+                <h4>医疗健康智能体问诊小程序</h4>
+                <p>围绕健康问题提供信息引导和智能问答，界面明确标注AI生成内容仅供参考。</p>
+                <div class="case-tags"><span>智能体问答</span><span>云开发</span><span>后端部署</span></div>
+              </div>
+            </article>
+            <article class="miniapp-card">
+              <div class="miniapp-visual"><img src="assets/miniapp-maternal-health.png" alt="孕妇产后健康管理小程序界面" loading="lazy" /></div>
+              <div class="miniapp-copy">
+                <h4>孕妇产后健康管理小程序</h4>
+                <p>整合饮食、体重、运动和日常提醒，方便持续记录和查看健康趋势。</p>
+                <div class="case-tags"><span>健康记录</span><span>云开发</span><span>后端部署</span></div>
+              </div>
+            </article>
+            <article class="miniapp-card">
+              <div class="miniapp-visual"><img src="assets/miniapp-community-service.png" alt="社区就业及志愿管理小程序界面" loading="lazy" /></div>
+              <div class="miniapp-copy">
+                <h4>社区就业及志愿管理小程序</h4>
+                <p>汇集社区岗位、志愿响应、活动报名和积分记录，服务本地社区协作。</p>
+                <div class="case-tags"><span>社区服务</span><span>云开发</span><span>后端部署</span></div>
+              </div>
+            </article>
+          </div>
+          <div class="delivery-note">这些案例展示的是产品设计与开发交付能力。医疗健康类功能用于信息辅助，不能替代医生诊断或专业医疗建议。</div>
         </div>
       </div>
     </section>
@@ -971,14 +1116,14 @@
         nav: {
           hi: [
             ['近况', '#now'],
+            ['AI工具蛙', '#tool-frog'],
             ['关于我', '#identity'],
-            ['现场', '#field'],
             ['项目合作', '#cooperate', 'work'],
             ['联系', '#contact']
           ],
           work: [
-            ['正在做', '#now'],
-            ['认识大风', '#identity'],
+            ['能力方向', '#now'],
+            ['项目案例', '#tool-frog'],
             ['项目现场', '#field'],
             ['合作方向', '#cooperate'],
             ['联系我', '#contact']
