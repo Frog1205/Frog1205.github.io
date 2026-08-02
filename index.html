@@ -444,6 +444,26 @@
     .maker-work-copy h3 { margin: 7px 0 7px; font-size: 22px; }
     .maker-work-copy p { margin: 0; color: var(--ink-soft); }
 
+    .recent-project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .recent-project-card {
+      min-height: 240px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+    }
+    .recent-project-card .no { color: var(--red); font-size: 12px; font-weight: 850; letter-spacing: .12em; }
+    .recent-project-card h3 { margin: 18px 0 14px; font-size: 25px; }
+    .recent-project-card ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+    .recent-project-card li + li { margin-top: 8px; }
+    .recent-project-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--blue);
+      color: var(--ink-soft);
+      background: rgba(255,253,248,.56);
+    }
+
     .case-group + .case-group { margin-top: 54px; }
     .case-group-head {
       display: flex;
@@ -836,6 +856,7 @@
       .case-dialog-inner { padding: 18px; }
       .maker-stats, .maker-work-grid { grid-template-columns: 1fr; }
       .maker-work-image { height: 210px; }
+      .recent-project-grid { grid-template-columns: 1fr; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -931,7 +952,7 @@
         <div class="card-grid">
           <article class="card">
             <div><div class="card-index">01 / BUILD</div><h3>AI Native 产品与 Agent</h3><p>我会从需求、PRD和原型开始，也自己写代码、做测试、看上线后的反馈。目前主要服务个人创业者和200人以内团队。</p></div>
-            <div class="card-link">最近项目 →</div>
+            <button class="card-link card-link-button" type="button" id="open-recent-projects" aria-haspopup="dialog" aria-controls="recent-projects-dialog">最近项目 →</button>
           </article>
           <article class="card">
             <div><div class="card-index">02 / NOTES</div><h3>大风AI慢游记</h3><p>写我用过的AI工具、做项目时踩过的坑，也写成都、活动和遇到的人。有东西值得记时再更新。</p></div>
@@ -1068,6 +1089,43 @@
             <div class="maker-work-copy"><span>04 / MATH</span><h3>凿壁</h3><p>把初中数学知识做成每天10分钟的互动挑战。</p></div>
           </article>
         </div>
+      </div>
+    </dialog>
+
+    <dialog class="case-dialog" id="recent-projects-dialog" aria-labelledby="recent-projects-dialog-title" data-audience="hi,work">
+      <div class="case-dialog-inner">
+        <div class="channel-dialog-head">
+          <div>
+            <div class="eyebrow">RECENT PROJECTS / 最近项目</div>
+            <h2 id="recent-projects-dialog-title">最近在推进的项目</h2>
+            <p>从系统搭建、产品开发到资源连接和课程研发，以下是当前持续积累的方向。</p>
+          </div>
+          <button class="channel-close" type="button" id="close-recent-projects" aria-label="关闭最近项目弹窗">×</button>
+        </div>
+
+        <div class="recent-project-grid">
+          <article class="recent-project-card">
+            <div class="no">01 / SYSTEMS</div>
+            <h3>系统搭建类</h3>
+            <ul><li>AI-native 产品开发 SOP</li><li>AI创客家创造方法论</li><li>FDE 交付体系</li></ul>
+          </article>
+          <article class="recent-project-card">
+            <div class="no">02 / AI CODING</div>
+            <h3>AI Coding 类</h3>
+            <ul><li>报名分销工具</li><li>人才匹配工具</li></ul>
+          </article>
+          <article class="recent-project-card">
+            <div class="no">03 / AI RESOURCES</div>
+            <h3>AI资源类</h3>
+            <ul><li>AI外包项目</li><li>AI人才招募</li><li>GPU交易</li><li>AI硬件</li></ul>
+          </article>
+          <article class="recent-project-card">
+            <div class="no">04 / COURSE R&amp;D</div>
+            <h3>AI课程研发</h3>
+            <ul><li>AI学习力</li><li>AI Agent开发</li><li>小程序开发</li></ul>
+          </article>
+        </div>
+        <div class="recent-project-note">公开主页展示项目方向。具体合作背景、客户信息和项目资料，会在确认沟通范围后提供。</div>
       </div>
     </dialog>
 
@@ -1520,6 +1578,17 @@
       if (event.target === makerHomeDialog) makerHomeDialog.close();
     });
     makerHomeDialog.addEventListener('close', () => openMakerHome.focus());
+
+    const recentProjectsDialog = document.getElementById('recent-projects-dialog');
+    const openRecentProjects = document.getElementById('open-recent-projects');
+    const closeRecentProjects = document.getElementById('close-recent-projects');
+
+    openRecentProjects.addEventListener('click', () => recentProjectsDialog.showModal());
+    closeRecentProjects.addEventListener('click', () => recentProjectsDialog.close());
+    recentProjectsDialog.addEventListener('click', event => {
+      if (event.target === recentProjectsDialog) recentProjectsDialog.close();
+    });
+    recentProjectsDialog.addEventListener('close', () => openRecentProjects.focus());
 
     navLinks.forEach(link => link.addEventListener('click', event => {
       const targetMode = link.dataset.targetMode;
