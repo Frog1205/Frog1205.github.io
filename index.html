@@ -456,6 +456,22 @@
     .recent-project-card h3 { margin: 18px 0 14px; font-size: 25px; }
     .recent-project-card ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
     .recent-project-card li + li { margin-top: 8px; }
+    .dialog-update {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: -6px 0 24px;
+    }
+    .dialog-update time, .dialog-update span {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: rgba(255,253,248,.64);
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .dialog-update time { color: var(--blue); }
     .recent-project-note {
       margin-top: 18px;
       padding: 16px 18px;
@@ -1101,6 +1117,12 @@
             <p>从系统搭建、产品开发到资源连接和课程研发，以下是当前持续积累的方向。</p>
           </div>
           <button class="channel-close" type="button" id="close-recent-projects" aria-label="关闭最近项目弹窗">×</button>
+        </div>
+
+        <div class="dialog-update" aria-label="项目更新信息">
+          <time datetime="2026-08-01">更新时间：2026年8月1日</time>
+          <span>后续持续更新</span>
+          <span>与本地AI知识库同步</span>
         </div>
 
         <div class="recent-project-grid">
