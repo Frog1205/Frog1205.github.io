@@ -135,6 +135,8 @@
     }
     .nav-links a:hover::after { right: 0; }
 
+    section[id], main[id] { scroll-margin-top: 104px; }
+
     .mode-switch {
       display: inline-flex;
       padding: 4px;
@@ -675,10 +677,10 @@
         <a href="#cooperate" data-nav-link="3">合作</a>
         <a href="#contact" data-nav-link="4">联系</a>
       </nav>
-      <div class="mode-switch" aria-label="页面版本切换">
-        <button type="button" data-mode-button="hi">认识大风</button>
-        <button type="button" data-mode-button="work">合作版</button>
-        <button type="button" data-mode-button="en">EN</button>
+      <div class="mode-switch" aria-label="选择主页内容">
+        <button type="button" data-mode-button="hi" aria-label="认识大风：近况、身份与现场" title="近况、身份与现场">认识大风</button>
+        <button type="button" data-mode-button="work" aria-label="项目合作：能力、合作方向与联系方式" title="能力、合作方向与联系方式">项目合作</button>
+        <button type="button" data-mode-button="en" aria-label="Ventus：English profile" title="English profile">Ventus</button>
       </div>
     </div>
   </header>
@@ -966,13 +968,22 @@
         brandName: '大风｜熊云锋',
         brandRole: 'AI APPLICATION ENTREPRENEUR',
         brandLabel: '返回首页',
-        nav: [
-          ['正在做', '#now'],
-          ['身份地图', '#identity'],
-          ['现场', '#field'],
-          ['合作', '#cooperate'],
-          ['联系', '#contact']
-        ],
+        nav: {
+          hi: [
+            ['近况', '#now'],
+            ['关于我', '#identity'],
+            ['现场', '#field'],
+            ['项目合作', '#cooperate', 'work'],
+            ['联系', '#contact']
+          ],
+          work: [
+            ['正在做', '#now'],
+            ['认识大风', '#identity'],
+            ['项目现场', '#field'],
+            ['合作方向', '#cooperate'],
+            ['联系我', '#contact']
+          ]
+        },
         copyLink: '复制当前版本链接',
         copyIntro: '复制一段介绍',
         copyTemplate: '复制合作沟通模板',
@@ -1039,7 +1050,11 @@
       const selectedUi = mode === 'en' ? ui.en : ui.zh;
       document.documentElement.dataset.mode = mode;
       document.documentElement.lang = selectedUi.lang;
-      modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.modeButton === mode));
+      modeButtons.forEach(btn => {
+        const isActive = btn.dataset.modeButton === mode;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
 
       allAudience.forEach(el => {
         const allowed = el.dataset.audience.split(',');
@@ -1075,10 +1090,12 @@
       document.getElementById('brand-name').textContent = selectedUi.brandName;
       document.getElementById('brand-role').textContent = selectedUi.brandRole;
       document.getElementById('brand-link').setAttribute('aria-label', selectedUi.brandLabel);
+      const selectedNav = mode === 'en' ? selectedUi.nav : selectedUi.nav[mode];
       navLinks.forEach((link, index) => {
-        const [label, href] = selectedUi.nav[index];
+        const [label, href, targetMode = ''] = selectedNav[index];
         link.textContent = label;
         link.href = href;
+        link.dataset.targetMode = targetMode;
         if (href.startsWith('http')) {
           link.target = '_blank';
           link.rel = 'noopener';
@@ -1119,6 +1136,22 @@
 
     modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.modeButton)));
 
+    navLinks.forEach(link => link.addEventListener('click', event => {
+      const targetMode = link.dataset.targetMode;
+      const href = link.getAttribute('href');
+      if (!targetMode || !href?.startsWith('#')) return;
+
+      event.preventDefault();
+      setMode(targetMode, false);
+      const nextUrl = new URL(location.href);
+      nextUrl.searchParams.delete('lang');
+      nextUrl.hash = href;
+      history.replaceState(null, '', nextUrl);
+      requestAnimationFrame(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }));
+
     document.getElementById('copy-link').addEventListener('click', () => {
       const isEnglish = document.documentElement.dataset.mode === 'en';
       copyText(location.href, isEnglish ? 'Page link copied' : '当前版本链接已复制');
@@ -1155,9 +1188,9 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
     setMode(
-      new URLSearchParams(location.search).get('lang') === 'en' || location.hash === '#en'
+      new URLSearchParams(location.search).get('lang') === 'en' || ['#en', '#interests', '#projects'].includes(location.hash)
         ? 'en'
-        : location.hash === '#work'
+        : ['#work', '#cooperate'].includes(location.hash)
           ? 'work'
           : 'hi',
       false

@@ -7,8 +7,8 @@
 ## 页面入口
 
 - 认识大风：<https://frog1205.github.io/#hi>
-- 合作版：<https://frog1205.github.io/#work>
-- English / Ventus: <https://frog1205.github.io/?lang=en#en>
+- 项目合作：<https://frog1205.github.io/#work>
+- Ventus：<https://frog1205.github.io/?lang=en#en>
 
 ## 本地预览
 
@@ -17,7 +17,7 @@
 ## 2026 更新清单
 
 - 首页增加 2026 版本标识
-- 保留「认识大风 / 合作版」双入口
+- 使用「认识大风 / 项目合作 / Ventus」三个内容入口
 - 新增 Ventus 英文版，介绍兴趣与项目合作方向
 - 增加搜索与社交分享元信息
 - 增加 GitHub 公开联系入口
