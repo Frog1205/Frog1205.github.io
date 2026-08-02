@@ -328,6 +328,76 @@
     .card h3 { margin: 18px 0 10px; font-size: 26px; line-height: 1.2; }
     .card p { margin: 0; color: var(--ink-soft); }
     .card-link { margin-top: 30px; font-weight: 800; font-size: 14px; color: var(--blue); }
+    .card-link-button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .card-link-button:hover { color: var(--red); }
+
+    .channel-dialog {
+      width: min(920px, calc(100% - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 0;
+      overflow: auto;
+      border: 1px solid rgba(23,23,23,.12);
+      border-radius: 26px;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 28px 80px rgba(14,30,54,.28);
+    }
+    .channel-dialog::backdrop { background: rgba(14,30,54,.58); backdrop-filter: blur(6px); }
+    .channel-dialog[open] { animation: dialog-in .18s ease-out; }
+    @keyframes dialog-in {
+      from { opacity: 0; transform: translateY(12px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .channel-dialog-inner { padding: 28px; }
+    .channel-dialog-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+    .channel-dialog-head h2 { margin-top: 6px; font-size: clamp(30px, 5vw, 48px); }
+    .channel-dialog-head p { margin: 12px 0 0; color: var(--ink-soft); }
+    .channel-close {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--paper-soft);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .channel-close:hover { color: var(--white); background: var(--ink); }
+    .channel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .channel-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+    }
+    .channel-image {
+      height: 430px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+    .channel-image img { width: 100%; height: 100%; object-fit: contain; }
+    .channel-copy { padding: 18px 20px 20px; }
+    .channel-copy span { color: var(--red); font-size: 12px; font-weight: 850; letter-spacing: .1em; }
+    .channel-copy h3 { margin: 7px 0 4px; font-size: 22px; }
+    .channel-copy p { margin: 0; color: var(--ink-soft); font-size: 14px; }
 
     .case-group + .case-group { margin-top: 54px; }
     .case-group-head {
@@ -711,6 +781,11 @@
       .game-visual:nth-child(2), .game-visual:nth-child(3) { margin-left: -24px; }
       .miniapp-grid { grid-template-columns: 1fr; }
       .miniapp-visual { height: 410px; }
+      .channel-dialog { width: calc(100% - 20px); max-height: calc(100vh - 20px); border-radius: 20px; }
+      .channel-dialog-inner { padding: 18px; }
+      .channel-dialog-head { gap: 12px; }
+      .channel-grid { grid-template-columns: 1fr; }
+      .channel-image { height: 390px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -810,7 +885,7 @@
           </article>
           <article class="card">
             <div><div class="card-index">02 / NOTES</div><h3>大风AI慢游记</h3><p>写我用过的AI工具、做项目时踩过的坑，也写成都、活动和遇到的人。有东西值得记时再更新。</p></div>
-            <div class="card-link">内容栏目 →</div>
+            <button class="card-link card-link-button" type="button" id="open-channels" aria-haspopup="dialog" aria-controls="channel-dialog">内容栏目 →</button>
           </article>
           <article class="card">
             <div><div class="card-index">03 / PROJECTS</div><h3>工具蛙与AI创客家</h3><p>工具蛙 Frog 收集AI工具、教程和轻产品；AI创客家和青少年一起动手做AI作品。</p></div>
@@ -1040,6 +1115,37 @@
       </div>
     </section>
   </main>
+
+  <dialog class="channel-dialog" id="channel-dialog" aria-labelledby="channel-dialog-title">
+    <div class="channel-dialog-inner">
+      <div class="channel-dialog-head">
+        <div>
+          <div class="eyebrow">CONTENT CHANNELS / 内容栏目</div>
+          <h2 id="channel-dialog-title">在哪里看大风的内容</h2>
+          <p>扫描对应二维码，在常用平台关注更新。</p>
+        </div>
+        <button class="channel-close" type="button" id="close-channels" aria-label="关闭内容栏目弹窗">×</button>
+      </div>
+      <div class="channel-grid">
+        <article class="channel-card">
+          <div class="channel-image"><img src="assets/channel-wechat-video.jpg" alt="视频号大风AI慢游记二维码" /></div>
+          <div class="channel-copy">
+            <span>视频号</span>
+            <h3>大风AI慢游记</h3>
+            <p>扫码进入视频号，查看视频和活动记录。</p>
+          </div>
+        </article>
+        <article class="channel-card">
+          <div class="channel-image"><img src="assets/channel-xiaohongshu.jpg" alt="小红书大风AI漫游记二维码" /></div>
+          <div class="channel-copy">
+            <span>小红书</span>
+            <h3>大风AI漫游记</h3>
+            <p>小红书号：xqr1019</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </dialog>
 
   <footer>
     <div class="shell">
@@ -1280,6 +1386,17 @@
     }
 
     modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.modeButton)));
+
+    const channelDialog = document.getElementById('channel-dialog');
+    const openChannels = document.getElementById('open-channels');
+    const closeChannels = document.getElementById('close-channels');
+
+    openChannels.addEventListener('click', () => channelDialog.showModal());
+    closeChannels.addEventListener('click', () => channelDialog.close());
+    channelDialog.addEventListener('click', event => {
+      if (event.target === channelDialog) channelDialog.close();
+    });
+    channelDialog.addEventListener('close', () => openChannels.focus());
 
     navLinks.forEach(link => link.addEventListener('click', event => {
       const targetMode = link.dataset.targetMode;
