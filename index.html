@@ -399,6 +399,21 @@
     .channel-copy h3 { margin: 7px 0 4px; font-size: 22px; }
     .channel-copy p { margin: 0; color: var(--ink-soft); font-size: 14px; }
 
+    .case-dialog {
+      width: min(1120px, calc(100% - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 0;
+      overflow: auto;
+      border: 1px solid rgba(23,23,23,.12);
+      border-radius: 26px;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 28px 80px rgba(14,30,54,.28);
+    }
+    .case-dialog::backdrop { background: rgba(14,30,54,.58); backdrop-filter: blur(6px); }
+    .case-dialog[open] { animation: dialog-in .18s ease-out; }
+    .case-dialog-inner { padding: 28px; }
+
     .case-group + .case-group { margin-top: 54px; }
     .case-group-head {
       display: flex;
@@ -786,6 +801,8 @@
       .channel-dialog-head { gap: 12px; }
       .channel-grid { grid-template-columns: 1fr; }
       .channel-image { height: 390px; }
+      .case-dialog { width: calc(100% - 20px); max-height: calc(100vh - 20px); border-radius: 20px; }
+      .case-dialog-inner { padding: 18px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -889,17 +906,21 @@
           </article>
           <article class="card">
             <div><div class="card-index">03 / PROJECTS</div><h3>工具蛙与AI创客家</h3><p>工具蛙 Frog 收集AI工具、教程和轻产品；AI创客家和青少年一起动手做AI作品。</p></div>
-            <a class="card-link" href="#tool-frog">查看AI工具蛙案例 →</a>
+            <button class="card-link card-link-button" type="button" id="open-tool-frog" aria-haspopup="dialog" aria-controls="tool-frog-dialog">查看AI工具蛙案例 →</button>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="tool-frog" data-audience="hi,work">
-      <div class="shell">
-        <div class="section-head">
-          <div><div class="eyebrow">AI TOOL FROG / 案例</div><h2>把真实需求，<br/>做成可以运行的工具。</h2></div>
-          <p class="section-intro">AI工具蛙持续整理实用工具，也会把需求做成开源项目和小程序。这里展示的是已经有代码或运行页面的案例。</p>
+    <dialog class="case-dialog" id="tool-frog-dialog" aria-labelledby="tool-frog-dialog-title" data-audience="hi,work">
+      <div class="case-dialog-inner">
+        <div class="channel-dialog-head">
+          <div>
+            <div class="eyebrow">AI TOOL FROG / 案例</div>
+            <h2 id="tool-frog-dialog-title">AI工具蛙案例</h2>
+            <p>把真实需求做成开源项目和可以运行的小程序。</p>
+          </div>
+          <button class="channel-close" type="button" id="close-tool-frog" aria-label="关闭AI工具蛙案例弹窗">×</button>
         </div>
 
         <div class="case-group">
@@ -969,7 +990,7 @@
           <div class="delivery-note">这些案例展示的是产品设计与开发交付能力。医疗健康类功能用于信息辅助，不能替代医生诊断或专业医疗建议。</div>
         </div>
       </div>
-    </section>
+    </dialog>
 
     <section id="identity" data-audience="hi,work">
       <div class="shell identity-map">
@@ -1098,7 +1119,7 @@
         <div>
           <div class="eyebrow" style="color:#F1C1B4">CONTACT / 联系</div>
           <h2 id="contact-title">有想法，可以来聊聊。</h2>
-          <p id="contact-copy">想聊AI产品、创业、工具或成都的活动，都可以通过 GitHub 联系我。合作项目请顺手带上背景和目标。</p>
+          <p id="contact-copy">想聊AI产品、创业、工具或成都的活动，可以通过微信或 GitHub 联系我。合作项目请顺手带上背景和目标。</p>
           <div class="contact-actions">
             <button class="btn red" type="button" id="copy-intro">复制一段介绍</button>
             <button class="btn secondary" type="button" id="copy-contact-template">复制合作沟通模板</button>
@@ -1111,6 +1132,7 @@
           <div class="contact-row"><span data-contact-label="3">GitHub</span><b data-contact-value="3"><a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a></b></div>
           <div class="contact-row"><span data-contact-label="4">合作沟通</span><b data-contact-value="4">请附项目背景与目标</b></div>
           <div class="contact-row"><span data-contact-label="5">内容栏目</span><b data-contact-value="5">大风AI慢游记</b></div>
+          <div class="contact-row"><span data-contact-label="6">微信号</span><b data-contact-value="6">xqr1019</b></div>
         </div>
       </div>
     </section>
@@ -1172,7 +1194,7 @@
         portraitSubtitle: '做产品，也四处走走',
         stamp: 'AI 应用<br>创业者<br>CHENGDU',
         contactTitle: '有想法，可以来聊聊。',
-        contactCopy: '想聊AI产品、创业、工具或成都的活动，都可以通过 GitHub 联系我。合作项目请顺手带上背景和目标。'
+        contactCopy: '想聊AI产品、创业、工具或成都的活动，可以通过微信或 GitHub 联系我。合作项目请顺手带上背景和目标。'
       },
       work: {
         kicker: '和大风合作',
@@ -1188,7 +1210,7 @@
         portraitSubtitle: '活动、开发和项目讨论',
         stamp: 'AI NATIVE<br>PRODUCT<br>BUILDER',
         contactTitle: '先把项目情况说清楚。',
-        contactCopy: '请发我业务背景、现在怎么做、卡在哪里、希望什么时候有结果。我看完再回复能不能接、怎么推进。'
+        contactCopy: '可以通过微信或 GitHub 发我业务背景、现在怎么做、卡在哪里、希望什么时候有结果。我看完再回复能不能接、怎么推进。'
       },
       en: {
         kicker: 'HELLO, I’M VENTUS',
@@ -1204,7 +1226,7 @@
         portraitSubtitle: 'Based in Chengdu, China',
         stamp: 'VENTUS<br>AI BUILDER<br>CHENGDU',
         contactTitle: 'Tell me what you are working on.',
-        contactCopy: 'Send the project background, current problem, expected result, and timeline. I’ll reply with what I can help with.',
+        contactCopy: 'Send the project background, current problem, expected result, and timeline through GitHub or WeChat. I’ll reply with what I can help with.',
         notes: ['Poetry, philosophy & history', 'Strategy games: Go, Xiangqi & Guandan Poker', 'AI project builder']
       }
     };
@@ -1222,14 +1244,14 @@
         nav: {
           hi: [
             ['近况', '#now'],
-            ['AI工具蛙', '#tool-frog'],
             ['关于我', '#identity'],
+            ['现场', '#field'],
             ['项目合作', '#cooperate', 'work'],
             ['联系', '#contact']
           ],
           work: [
-            ['能力方向', '#now'],
-            ['项目案例', '#tool-frog'],
+            ['正在做', '#now'],
+            ['认识大风', '#identity'],
             ['项目现场', '#field'],
             ['合作方向', '#cooperate'],
             ['联系我', '#contact']
@@ -1240,8 +1262,8 @@
         copyTemplate: '复制合作沟通模板',
         footerName: '大风｜熊云锋',
         footerNote: '2026 · 成都 · 最近还在继续更新',
-        contactLabels: ['对外称呼', '真实姓名', '所在城市', 'GitHub', '合作沟通', '内容栏目'],
-        contactValues: ['大风', '熊云锋', '成都', '<a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a>', '请附项目背景与目标', '大风AI慢游记']
+        contactLabels: ['对外称呼', '真实姓名', '所在城市', 'GitHub', '合作沟通', '内容栏目', '微信号'],
+        contactValues: ['大风', '熊云锋', '成都', '<a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a>', '请附项目背景与目标', '大风AI慢游记', 'xqr1019']
       },
       en: {
         lang: 'en',
@@ -1264,8 +1286,8 @@
         copyTemplate: 'Copy project brief',
         footerName: 'Ventus｜Xiong Yunfeng',
         footerNote: '2026 · Chengdu · Updated from time to time',
-        contactLabels: ['Name', 'Chinese name', 'Based in', 'GitHub', 'Project brief', 'Focus'],
-        contactValues: ['Ventus', 'Xiong Yunfeng', 'Chengdu, China', '<a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a>', 'Context · Goal · Constraint · Timeline', 'AI · Data · Hardware · Delivery']
+        contactLabels: ['Name', 'Chinese name', 'Based in', 'GitHub', 'Project brief', 'Focus', 'WeChat'],
+        contactValues: ['Ventus', 'Xiong Yunfeng', 'Chengdu, China', '<a href="https://github.com/Frog1205" target="_blank" rel="noopener">Frog1205 ↗</a>', 'Context · Goal · Constraint · Timeline', 'AI · Data · Hardware · Delivery', 'xqr1019']
       }
     };
 
@@ -1397,6 +1419,17 @@
       if (event.target === channelDialog) channelDialog.close();
     });
     channelDialog.addEventListener('close', () => openChannels.focus());
+
+    const toolFrogDialog = document.getElementById('tool-frog-dialog');
+    const openToolFrog = document.getElementById('open-tool-frog');
+    const closeToolFrog = document.getElementById('close-tool-frog');
+
+    openToolFrog.addEventListener('click', () => toolFrogDialog.showModal());
+    closeToolFrog.addEventListener('click', () => toolFrogDialog.close());
+    toolFrogDialog.addEventListener('click', event => {
+      if (event.target === toolFrogDialog) toolFrogDialog.close();
+    });
+    toolFrogDialog.addEventListener('close', () => openToolFrog.focus());
 
     navLinks.forEach(link => link.addEventListener('click', event => {
       const targetMode = link.dataset.targetMode;

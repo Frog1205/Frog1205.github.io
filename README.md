@@ -8,7 +8,6 @@
 
 - 认识大风：<https://frog1205.github.io/#hi>
 - 项目合作：<https://frog1205.github.io/#work>
-- AI工具蛙案例：<https://frog1205.github.io/#tool-frog>
 - Ventus：<https://frog1205.github.io/?lang=en#en>
 
 ## 本地预览
@@ -20,8 +19,9 @@
 - 首页增加 2026 版本标识
 - 使用「认识大风 / 项目合作 / Ventus」三个内容入口
 - 新增 Ventus 英文版，介绍兴趣与项目合作方向
-- 增加 AI工具蛙开源项目和小程序交付案例
+- “工具蛙与AI创客家”支持弹窗查看开源项目和小程序案例
 - “内容栏目”支持弹窗查看视频号与小红书二维码
+- 增加公开微信号 `xqr1019`
 - 增加搜索与社交分享元信息
 - 增加 GitHub 公开联系入口
 - 使用 GitHub Pages 持续部署
