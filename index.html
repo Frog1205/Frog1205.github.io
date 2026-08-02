@@ -337,6 +337,8 @@
       cursor: pointer;
     }
     .card-link-button:hover { color: var(--red); }
+    .card-link-group { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 30px; }
+    .card-link-group .card-link { margin-top: 0; }
 
     .channel-dialog {
       width: min(920px, calc(100% - 32px));
@@ -413,6 +415,34 @@
     .case-dialog::backdrop { background: rgba(14,30,54,.58); backdrop-filter: blur(6px); }
     .case-dialog[open] { animation: dialog-in .18s ease-out; }
     .case-dialog-inner { padding: 28px; }
+
+    .maker-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 6px 0 36px;
+    }
+    .maker-stat {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper-soft);
+    }
+    .maker-stat b { display: block; color: var(--blue); font-size: 24px; }
+    .maker-stat span { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 13px; }
+    .maker-work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .maker-work-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+    }
+    .maker-work-image { height: 270px; background: #10141c; }
+    .maker-work-image img { width: 100%; height: 100%; object-fit: contain; }
+    .maker-work-copy { padding: 20px 22px 22px; }
+    .maker-work-copy span { color: var(--red); font-size: 11px; font-weight: 850; letter-spacing: .11em; }
+    .maker-work-copy h3 { margin: 7px 0 7px; font-size: 22px; }
+    .maker-work-copy p { margin: 0; color: var(--ink-soft); }
 
     .case-group + .case-group { margin-top: 54px; }
     .case-group-head {
@@ -754,6 +784,7 @@
       .card-grid { grid-template-columns: 1fr; }
       .repo-grid { grid-template-columns: 1fr; }
       .miniapp-grid { grid-template-columns: repeat(2, 1fr); }
+      .maker-stats { grid-template-columns: repeat(2, 1fr); }
       .case-group-head { align-items: start; flex-direction: column; }
       .section-intro { justify-self: start; }
       .identity-avatar { min-height: 420px; }
@@ -803,6 +834,8 @@
       .channel-image { height: 390px; }
       .case-dialog { width: calc(100% - 20px); max-height: calc(100vh - 20px); border-radius: 20px; }
       .case-dialog-inner { padding: 18px; }
+      .maker-stats, .maker-work-grid { grid-template-columns: 1fr; }
+      .maker-work-image { height: 210px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -906,7 +939,10 @@
           </article>
           <article class="card">
             <div><div class="card-index">03 / PROJECTS</div><h3>工具蛙与AI创客家</h3><p>工具蛙 Frog 收集AI工具、教程和轻产品；AI创客家和青少年一起动手做AI作品。</p></div>
-            <button class="card-link card-link-button" type="button" id="open-tool-frog" aria-haspopup="dialog" aria-controls="tool-frog-dialog">查看AI工具蛙案例 →</button>
+            <div class="card-link-group">
+              <button class="card-link card-link-button" type="button" id="open-tool-frog" aria-haspopup="dialog" aria-controls="tool-frog-dialog">AI工具蛙案例 →</button>
+              <button class="card-link card-link-button" type="button" id="open-maker-home" aria-haspopup="dialog" aria-controls="maker-home-dialog">AI创客家案例 →</button>
+            </div>
           </article>
         </div>
       </div>
@@ -988,6 +1024,49 @@
             </article>
           </div>
           <div class="delivery-note">这些案例展示的是产品设计与开发交付能力。医疗健康类功能用于信息辅助，不能替代医生诊断或专业医疗建议。</div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="case-dialog" id="maker-home-dialog" aria-labelledby="maker-home-dialog-title" data-audience="hi,work">
+      <div class="case-dialog-inner">
+        <div class="channel-dialog-head">
+          <div>
+            <div class="eyebrow">AI MAKER HOME / AI创客家</div>
+            <h2 id="maker-home-dialog-title">AI创客家案例</h2>
+            <p>从2025年10月至今，我以AI-PBL教练身份，带领300多名8—18岁青少年完成AI探索和作品创造。</p>
+          </div>
+          <button class="channel-close" type="button" id="close-maker-home" aria-label="关闭AI创客家案例弹窗">×</button>
+        </div>
+
+        <div class="maker-stats" aria-label="AI创客家经历数据">
+          <div class="maker-stat"><b>2025.10—至今</b><span>AI-PBL 教练经历</span></div>
+          <div class="maker-stat"><b>300+</b><span>参与AI探索的青少年</span></div>
+          <div class="maker-stat"><b>8—18岁</b><span>覆盖年龄范围</span></div>
+          <div class="maker-stat"><b>3位</b><span>小创客顺利结营</span></div>
+        </div>
+
+        <div class="case-group-head">
+          <h3>创客营作品示例</h3>
+          <p>从问题发现、方案梳理到界面和功能实现，让青少年在做作品的过程中理解AI。</p>
+        </div>
+        <div class="maker-work-grid">
+          <article class="maker-work-card">
+            <div class="maker-work-image"><img src="assets/maker-ai-text-radar.png" alt="创客营作品作文痕迹雷达界面" loading="lazy" /></div>
+            <div class="maker-work-copy"><span>01 / AI TEXT</span><h3>作文痕迹雷达</h3><p>检测文本中的AI痕迹风险，并提供更自然的改写方向。</p></div>
+          </article>
+          <article class="maker-work-card">
+            <div class="maker-work-image"><img src="assets/maker-pre-war.png" alt="创客营作品Pre-war路演模拟器界面" loading="lazy" /></div>
+            <div class="maker-work-copy"><span>02 / PITCH</span><h3>Pre-war 路演模拟器</h3><p>模拟投资人路演问答，训练表达、判断和临场回应。</p></div>
+          </article>
+          <article class="maker-work-card">
+            <div class="maker-work-image"><img src="assets/maker-study-platform.png" alt="创客营作品拾光知学学习台界面" loading="lazy" /></div>
+            <div class="maker-work-copy"><span>03 / LEARNING</span><h3>拾光知学</h3><p>面向初高中全科的学习台，整合课程、题库与互动课堂。</p></div>
+          </article>
+          <article class="maker-work-card">
+            <div class="maker-work-image"><img src="assets/maker-math-wall.jpg" alt="创客营作品凿壁数学学习界面" loading="lazy" /></div>
+            <div class="maker-work-copy"><span>04 / MATH</span><h3>凿壁</h3><p>把初中数学知识做成每天10分钟的互动挑战。</p></div>
+          </article>
         </div>
       </div>
     </dialog>
@@ -1430,6 +1509,17 @@
       if (event.target === toolFrogDialog) toolFrogDialog.close();
     });
     toolFrogDialog.addEventListener('close', () => openToolFrog.focus());
+
+    const makerHomeDialog = document.getElementById('maker-home-dialog');
+    const openMakerHome = document.getElementById('open-maker-home');
+    const closeMakerHome = document.getElementById('close-maker-home');
+
+    openMakerHome.addEventListener('click', () => makerHomeDialog.showModal());
+    closeMakerHome.addEventListener('click', () => makerHomeDialog.close());
+    makerHomeDialog.addEventListener('click', event => {
+      if (event.target === makerHomeDialog) makerHomeDialog.close();
+    });
+    makerHomeDialog.addEventListener('close', () => openMakerHome.focus());
 
     navLinks.forEach(link => link.addEventListener('click', event => {
       const targetMode = link.dataset.targetMode;
