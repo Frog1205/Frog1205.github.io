@@ -661,6 +661,35 @@
     }
     .identity-avatar img { width: min(100%, 520px); transform: translateY(10px); }
 
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .event-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper-soft);
+    }
+    .event-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: cover;
+    }
+    .event-card:first-child img { object-position: center 36%; }
+    .event-copy { padding: 20px 22px 22px; }
+    .event-copy time {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .12em;
+    }
+    .event-copy h3 { margin: 8px 0 8px; font-size: 24px; line-height: 1.25; }
+    .event-copy p { margin: 0; color: var(--ink-soft); }
+
     .photo-grid {
       display: grid;
       grid-template-columns: 1.2fr .8fr .8fr;
@@ -824,6 +853,7 @@
       .case-group-head { align-items: start; flex-direction: column; }
       .section-intro { justify-self: start; }
       .identity-avatar { min-height: 420px; }
+      .event-copy h3 { font-size: 21px; }
       .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 360px 250px 250px; }
       .photo:first-child { grid-column: 1 / 3; grid-row: auto; }
       .photo:nth-child(4) { grid-column: 1 / 3; }
@@ -851,6 +881,7 @@
       .section-head { gap: 16px; }
       .identity-copy { padding: 28px 22px; }
       .identity-row { grid-template-columns: 1fr; gap: 4px; }
+      .event-grid { grid-template-columns: 1fr; }
       .photo-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(4, 270px); }
       .photo:first-child, .photo:nth-child(4) { grid-column: auto; }
       .interest-grid { grid-template-columns: 1fr; }
@@ -1171,8 +1202,26 @@
     <section id="field" data-audience="hi,work">
       <div class="shell">
         <div class="section-head">
-          <div><div class="eyebrow">FIELD / 日常照片</div><h2>一些工作和生活照片。</h2></div>
-          <p class="section-intro">有公开分享，也有项目讨论、做笔记和在成都闲聊的时刻。这里放的都是我平时会做的事。</p>
+          <div><div class="eyebrow">FIELD / 现场记录</div><h2>最近去过的现场。</h2></div>
+          <p class="section-intro">2026年8月参加了两场成都开发者活动。这里也保留一些公开分享、项目讨论和日常交流的照片。</p>
+        </div>
+        <div class="event-grid">
+          <article class="event-card">
+            <img src="assets/event-datawhale-miniapp.jpg" alt="大风作为DataWhale小程序嘉宾参加成都小程序开发者活动" loading="lazy" />
+            <div class="event-copy">
+              <time datetime="2026-08">2026.08 · 中旬</time>
+              <h3>DataWhale 成都小程序开发者活动</h3>
+              <p>作为小程序嘉宾参加活动，和现场开发者交流小程序开发与AI实践。</p>
+            </div>
+          </article>
+          <article class="event-card">
+            <img src="assets/event-offmapai-hackathon.jpg" alt="大风作为嘉宾参加Off-mapAI黑客松大赛" loading="lazy" />
+            <div class="event-copy">
+              <time datetime="2026-08">2026.08 · 月底</time>
+              <h3>Off-mapAI 黑客松大赛</h3>
+              <p>作为嘉宾参加大赛，和参赛者及开发者交流AI项目、产品创造与落地。</p>
+            </div>
+          </article>
         </div>
         <div class="photo-grid">
           <figure class="photo"><img src="assets/talk-stage.jpg" alt="大风在通义时间成都站公开分享" /><figcaption><b>公开表达</b>通义时间 · 成都站</figcaption></figure>
