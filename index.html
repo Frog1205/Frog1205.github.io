@@ -197,6 +197,62 @@
       font-size: clamp(17px, 2vw, 21px);
     }
     .hero-lead b { color: var(--ink); font-weight: 700; }
+    .hero-focus-map {
+      position: relative;
+      width: min(100%, 650px);
+      min-height: 430px;
+      margin: 20px 0 22px;
+      overflow: hidden;
+      border: 1px solid rgba(36,85,143,.14);
+      border-radius: 30px;
+      background: rgba(255,255,255,.32);
+    }
+    .hero-focus-map::before {
+      content: "";
+      position: absolute;
+      inset: 9% 12%;
+      border: 1px dashed rgba(36,85,143,.16);
+      border-radius: 50%;
+      transform: rotate(-8deg);
+    }
+    .hero-focus-orbit { position: absolute; width: 142px; height: 142px; border: 1px solid rgba(36,85,143,.12); border-radius: 50%; }
+    .hero-focus-orbit.one { left: 8%; top: 18%; }
+    .hero-focus-orbit.two { right: 8%; top: 17%; transform: scale(.8); }
+    .hero-focus-orbit.three { right: 18%; bottom: 8%; transform: scale(.55); opacity: .7; }
+    .hero-focus-connections { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; }
+    .hero-focus-connections path { fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; opacity: .84; }
+    .hero-focus-connections marker path { fill: var(--red); stroke: none; }
+    .hero-focus-star {
+      position: absolute;
+      left: 50%; top: 61%; z-index: 2;
+      width: 230px; height: 230px;
+      display: grid; place-items: center;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      color: var(--white); text-align: center;
+      background: var(--blue);
+      box-shadow: 0 22px 50px rgba(36,85,143,.24);
+    }
+    .hero-focus-star::before { content: "✦"; position: absolute; top: 24px; color: #f2c94c; font-size: 25px; }
+    .hero-focus-star small { display: block; margin-bottom: 8px; font-size: 10px; letter-spacing: .18em; opacity: .82; }
+    .hero-focus-star strong { display: block; max-width: 160px; font-size: 26px; line-height: 1.08; letter-spacing: -.04em; }
+    .hero-focus-node {
+      position: absolute; z-index: 3;
+      display: grid; place-items: center;
+      padding: 18px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      color: var(--ink); text-align: center;
+      background: rgba(255,253,248,.95);
+      box-shadow: 0 14px 30px rgba(23,23,23,.08);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .hero-focus-node:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 18px 34px rgba(36,85,143,.14); }
+    .hero-focus-node small { display: block; margin-bottom: 7px; color: var(--red); font-size: 9px; font-weight: 850; letter-spacing: .14em; }
+    .hero-focus-node strong { display: block; font-size: 18px; line-height: 1.12; letter-spacing: -.04em; }
+    .hero-focus-node.creator { left: 5%; top: 7%; width: 154px; height: 154px; }
+    .hero-focus-node.content { right: 5%; top: 7%; width: 136px; height: 136px; }
+    .hero-focus-caption { position: absolute; left: 24px; bottom: 20px; color: var(--ink-soft); font-size: 10px; letter-spacing: .1em; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
     .btn {
@@ -887,6 +943,11 @@
       .hero { padding: 38px 0 24px; }
       h1 { font-size: clamp(46px, 15vw, 70px); }
       .hero-lead { font-size: 16px; }
+      .hero-focus-map { min-height: 420px; margin-top: 14px; }
+      .hero-focus-star { width: 210px; height: 210px; }
+      .hero-focus-star strong { font-size: 24px; }
+      .hero-focus-node.creator { left: 3%; width: 138px; height: 138px; }
+      .hero-focus-node.content { right: 2%; width: 124px; height: 124px; }
       .portrait-wrap { margin-top: 8px; }
       .stamp { width: 88px; height: 88px; right: -4px; top: -18px; font-size: 10px; }
       .trust-grid { grid-template-columns: 1fr 1fr; }
@@ -967,7 +1028,19 @@
       <div class="shell hero-grid">
         <div>
           <div class="kicker" id="hero-kicker">你好，我是大风</div>
-          <h1 id="hero-title">最近聚焦：<span class="accent">AI-native 产品开发、青少年 AI 创客与内容创作。</span></h1>
+          <h1 id="hero-title" data-audience="work,en">有 AI 项目，<span class="accent">我们可以一起做。</span></h1>
+          <div class="hero-focus-map" data-audience="hi" aria-label="最近聚焦：AI-native 产品开发、青少年 AI 创客、内容创作">
+            <div class="hero-focus-orbit one"></div><div class="hero-focus-orbit two"></div><div class="hero-focus-orbit three"></div>
+            <svg class="hero-focus-connections" viewBox="0 0 650 430" aria-hidden="true">
+              <defs><marker id="hero-focus-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" /></marker></defs>
+              <path d="M 158 128 C 205 145, 224 178, 248 202" marker-end="url(#hero-focus-arrow)" />
+              <path d="M 493 116 C 447 137, 424 175, 402 202" marker-end="url(#hero-focus-arrow)" />
+            </svg>
+            <div class="hero-focus-star"><div><small>THE NORTH STAR</small><strong>AI-native<br/>产品开发</strong></div></div>
+            <div class="hero-focus-node creator"><div><small>01 / MAKE</small><strong>青少年<br/>AI 创客</strong></div></div>
+            <div class="hero-focus-node content"><div><small>02 / NOTES</small><strong>内容<br/>创作</strong></div></div>
+            <div class="hero-focus-caption">NORTH STAR / 2026</div>
+          </div>
           <p class="hero-lead" id="hero-lead">
             本名熊云锋。平时做产品、写代码、跑项目，也会去线下活动认识新朋友。我把工作中的发现和踩过的坑写进「大风AI慢游记」。
           </p>
