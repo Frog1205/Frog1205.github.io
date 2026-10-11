@@ -479,6 +479,20 @@
       color: var(--ink-soft);
       background: rgba(255,253,248,.56);
     }
+    .build-log {
+      margin: 4px 0 22px;
+      padding: 18px;
+      border: 1px solid rgba(20,45,78,.12);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(241,247,251,.84));
+    }
+    .build-log-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+    .build-log-head h3 { margin: 0; font-size: 18px; }
+    .build-log-head span { color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .12em; }
+    .build-log-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .build-log-list li { padding: 12px; border-radius: 12px; background: rgba(255,255,255,.82); color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
+    .build-log-list b { display: block; margin-bottom: 4px; color: var(--ink); font-size: 14px; }
+    .build-log-list a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
 
     .case-group + .case-group { margin-top: 54px; }
     .case-group-head {
@@ -904,6 +918,7 @@
       .maker-stats, .maker-work-grid { grid-template-columns: 1fr; }
       .maker-work-image { height: 210px; }
       .recent-project-grid { grid-template-columns: 1fr; }
+      .build-log-list { grid-template-columns: 1fr; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
@@ -1151,10 +1166,22 @@
         </div>
 
         <div class="dialog-update" aria-label="项目更新信息">
-          <time datetime="2026-08-01">更新时间：2026年8月1日</time>
+          <time datetime="2026-10-11">更新时间：2026年10月11日</time>
           <span>后续持续更新</span>
-          <span>与本地AI知识库同步</span>
+          <span>公开项目与研发记录</span>
         </div>
+
+        <section class="build-log" aria-labelledby="build-log-title">
+          <div class="build-log-head"><h3 id="build-log-title">近期新增 / Build Log</h3><span>NOW · 2026.10</span></div>
+          <ul class="build-log-list">
+            <li><b>AI-native 密度开发</b>把 L1–L3 × A1–A3 方法论整理成可复用的开发流程与 Skill。</li>
+            <li><b>AI Creator 工作台</b>继续推进本地 v2.0，围绕作品、课程与家长沟通做产品化整理。</li>
+            <li><b>10月 AI 创客营</b>记录两天实践、MVP 与路演，把现场经验沉淀为可复用课程。</li>
+            <li><b>Codex Three-Provider Switcher</b><a href="https://github.com/Frog1205/codex-three-provider-switcher" target="_blank" rel="noopener">查看公开仓库 ↗</a></li>
+            <li><b>Claude Desktop Model Launcher</b><a href="https://github.com/Frog1205/claude-desktop-model-launcher" target="_blank" rel="noopener">查看公开仓库 ↗</a>（macOS 版本待实机验证）</li>
+            <li><b>Jev Cases</b><a href="https://github.com/Frog1205/jev-cases" target="_blank" rel="noopener">查看公开案例仓库 ↗</a></li>
+          </ul>
+        </section>
 
         <div class="recent-project-grid">
           <article class="recent-project-card">
