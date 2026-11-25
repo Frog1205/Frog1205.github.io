@@ -198,61 +198,53 @@
     }
     .hero-lead b { color: var(--ink); font-weight: 700; }
     .hero-focus-map {
-      position: relative;
-      width: min(100%, 650px);
-      min-height: 430px;
-      margin: 20px 0 22px;
+      max-width: 640px;
+      margin: 18px 0 22px;
+      background: #203b53;
+      color: #fff9e9;
+      border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(36,85,143,.14);
-      border-radius: 30px;
-      background: rgba(255,255,255,.32);
+      container-type: inline-size;
     }
-    .hero-focus-map::before {
-      content: "";
+    .focus-chart { position: relative; aspect-ratio: 600 / 340; }
+    .focus-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .focus-node {
       position: absolute;
-      inset: 9% 12%;
-      border: 1px dashed rgba(36,85,143,.16);
-      border-radius: 50%;
-      transform: rotate(-8deg);
-    }
-    .hero-focus-orbit { position: absolute; width: 142px; height: 142px; border: 1px solid rgba(36,85,143,.12); border-radius: 50%; }
-    .hero-focus-orbit.one { left: 8%; top: 18%; }
-    .hero-focus-orbit.two { right: 8%; top: 17%; transform: scale(.8); }
-    .hero-focus-orbit.three { right: 18%; bottom: 8%; transform: scale(.55); opacity: .7; }
-    .hero-focus-connections { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; }
-    .hero-focus-connections path { fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; opacity: .84; }
-    .hero-focus-connections marker path { fill: var(--red); stroke: none; }
-    .hero-focus-star {
-      position: absolute;
-      left: 50%; top: 61%; z-index: 2;
-      width: 230px; height: 230px;
-      display: grid; place-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       transform: translate(-50%, -50%);
+      aspect-ratio: 1;
+      padding: 0;
+      border: 1px solid #92a9b5;
       border-radius: 50%;
-      color: var(--white); text-align: center;
-      background: var(--blue);
-      box-shadow: 0 22px 50px rgba(36,85,143,.24);
+      background: #233e54;
+      color: inherit;
+      cursor: pointer;
+      line-height: 1.25;
+      transition: background-color .18s, border-color .18s;
     }
-    .hero-focus-star::before { content: "✦"; position: absolute; top: 24px; color: #f2c94c; font-size: 25px; }
-    .hero-focus-star small { display: block; margin-bottom: 8px; font-size: 10px; letter-spacing: .18em; opacity: .82; }
-    .hero-focus-star strong { display: block; max-width: 160px; font-size: 26px; line-height: 1.08; letter-spacing: -.04em; }
-    .hero-focus-node {
-      position: absolute; z-index: 3;
-      display: grid; place-items: center;
-      padding: 18px;
-      border: 1.5px solid var(--ink);
-      border-radius: 50%;
-      color: var(--ink); text-align: center;
-      background: rgba(255,253,248,.95);
-      box-shadow: 0 14px 30px rgba(23,23,23,.08);
-      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    .focus-node:hover { border-color: #ffe0a0; background: #2f4e68; }
+    .focus-node:focus-visible { outline: 3px solid #e8b76f; outline-offset: 3px; }
+    .focus-node strong { font-size: clamp(14px, 3.7cqw, 24px); font-weight: 650; }
+    .focus-node small { margin-top: .55em; font-size: clamp(11px, 2.2cqw, 14px); color: #ccdce0; }
+    .focus-node.build {
+      left: 26.3333%; top: 51.4706%; width: 35%;
+      background: #f4eddc; color: #18394c; border-color: #f4eddc;
     }
-    .hero-focus-node:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 18px 34px rgba(36,85,143,.14); }
-    .hero-focus-node small { display: block; margin-bottom: 7px; color: var(--red); font-size: 9px; font-weight: 850; letter-spacing: .14em; }
-    .hero-focus-node strong { display: block; font-size: 18px; line-height: 1.12; letter-spacing: -.04em; }
-    .hero-focus-node.creator { left: 5%; top: 7%; width: 154px; height: 154px; }
-    .hero-focus-node.content { right: 5%; top: 7%; width: 136px; height: 136px; }
-    .hero-focus-caption { position: absolute; left: 24px; bottom: 20px; color: var(--ink-soft); font-size: 10px; letter-spacing: .1em; }
+    .focus-node.build:hover { background: #fff9eb; }
+    .focus-node.build strong { font-size: clamp(17px, 4.5cqw, 30px); }
+    .focus-node.build em {
+      display: block; font: italic 1.39em Georgia, serif; letter-spacing: -.04em;
+    }
+    .focus-node.build small { color: #476270; }
+    .focus-node.make { left: 76.8333%; top: 25.2941%; width: 23%; }
+    .focus-node.notes { left: 78.8333%; top: 74.7059%; width: 22%; }
+    .screen-reader-title {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+    }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
     .btn {
@@ -512,22 +504,7 @@
     .recent-project-card h3 { margin: 18px 0 14px; font-size: 25px; }
     .recent-project-card ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
     .recent-project-card li + li { margin-top: 8px; }
-    .dialog-update {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: -6px 0 24px;
-    }
-    .dialog-update time, .dialog-update span {
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--ink-soft);
-      background: rgba(255,253,248,.64);
-      font-size: 12px;
-      font-weight: 750;
-    }
-    .dialog-update time { color: var(--blue); }
+    .dialog-update { margin: -8px 0 24px; color: var(--ink-soft); font-size: 14px; }
     .recent-project-note {
       margin-top: 18px;
       padding: 16px 18px;
@@ -535,20 +512,16 @@
       color: var(--ink-soft);
       background: rgba(255,253,248,.56);
     }
-    .build-log {
-      margin: 4px 0 22px;
-      padding: 18px;
-      border: 1px solid rgba(20,45,78,.12);
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(241,247,251,.84));
+    .build-log { margin: 24px 0 36px; padding: 0; }
+    .build-log h3 { margin: 0; padding-bottom: 10px; font-size: 22px; border-bottom: 2px solid var(--blue-deep); }
+    .build-log-list { list-style: none; margin: 0; padding: 0; }
+    .build-log-list li {
+      display: grid; grid-template-columns: minmax(180px, .8fr) 1.4fr;
+      gap: 24px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--line);
+      font-size: 15px; color: var(--ink-soft);
     }
-    .build-log-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
-    .build-log-head h3 { margin: 0; font-size: 18px; }
-    .build-log-head span { color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .12em; }
-    .build-log-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
-    .build-log-list li { padding: 12px; border-radius: 12px; background: rgba(255,255,255,.82); color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
-    .build-log-list b { display: block; margin-bottom: 4px; color: var(--ink); font-size: 14px; }
-    .build-log-list a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .build-log-list b { color: var(--ink); font-size: 16px; }
+    .build-log-list a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 
     .case-group + .case-group { margin-top: 54px; }
     .case-group-head {
@@ -737,17 +710,14 @@
       gap: 16px;
       margin-bottom: 16px;
     }
-    .event-card {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--paper-soft);
-    }
+    .event-card { min-width: 0; border-top: 1px solid var(--line); padding-top: 12px; }
     .event-card img {
       width: 100%;
+      height: auto;
       aspect-ratio: 4 / 3;
       display: block;
       object-fit: cover;
+      border-radius: 6px;
     }
     .event-card:first-child img { object-position: center 36%; }
     .event-card .event-photo-full { object-fit: contain; background: #eae6de; }
@@ -756,7 +726,7 @@
     .product-launch time { color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: .1em; }
     .product-launch h3 { margin: 10px 0 8px; font-size: 28px; }
     .product-launch p { margin: 0; max-width: 650px; color: var(--ink-soft); }
-    .event-copy { padding: 20px 22px 22px; }
+    .event-copy { padding: 16px 0 26px; }
     .event-copy time {
       color: var(--red);
       font-size: 12px;
@@ -949,11 +919,7 @@
       .hero { padding: 38px 0 24px; }
       h1 { font-size: clamp(46px, 15vw, 70px); }
       .hero-lead { font-size: 16px; }
-      .hero-focus-map { min-height: 420px; margin-top: 14px; }
-      .hero-focus-star { width: 210px; height: 210px; }
-      .hero-focus-star strong { font-size: 24px; }
-      .hero-focus-node.creator { left: 3%; width: 138px; height: 138px; }
-      .hero-focus-node.content { right: 2%; width: 124px; height: 124px; }
+      .hero-focus-map { margin-top: 14px; }
       .portrait-wrap { margin-top: 8px; }
       .stamp { width: 88px; height: 88px; right: -4px; top: -18px; font-size: 10px; }
       .trust-grid { grid-template-columns: 1fr 1fr; }
@@ -985,15 +951,18 @@
       .maker-stats, .maker-work-grid { grid-template-columns: 1fr; }
       .maker-work-image { height: 210px; }
       .recent-project-grid { grid-template-columns: 1fr; }
-      .build-log-list { grid-template-columns: 1fr; }
+      .build-log-list li { grid-template-columns: 1fr; gap: 4px; }
       .english-project-grid { grid-template-columns: 1fr; }
       .work-list { padding: 6px 22px; }
       .work-item { grid-template-columns: 40px 1fr; }
       footer .shell { flex-direction: column; }
     }
 
+    @media (max-width: 370px) {
+      .nav { flex-wrap: wrap; justify-content: center; padding-block: 8px; gap: 6px 16px; }
+    }
     @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto !important; transition: none !important; }
+      * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
   </style>
 </head>
@@ -1034,18 +1003,38 @@
       <div class="shell hero-grid">
         <div>
           <div class="kicker" id="hero-kicker">你好，我是大风</div>
-          <h1 id="hero-title" data-audience="work,en">有 AI 项目，<span class="accent">我们可以一起做。</span></h1>
-          <div class="hero-focus-map" data-audience="hi" aria-label="最近聚焦：AI-native 产品开发、青少年 AI 创客、内容创作">
-            <div class="hero-focus-orbit one"></div><div class="hero-focus-orbit two"></div><div class="hero-focus-orbit three"></div>
-            <svg class="hero-focus-connections" viewBox="0 0 650 430" aria-hidden="true">
-              <defs><marker id="hero-focus-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" /></marker></defs>
-              <path d="M 158 128 C 205 145, 224 178, 248 202" marker-end="url(#hero-focus-arrow)" />
-              <path d="M 493 116 C 447 137, 424 175, 402 202" marker-end="url(#hero-focus-arrow)" />
-            </svg>
-            <div class="hero-focus-star"><div><small>THE NORTH STAR</small><strong>AI-native<br/>产品开发</strong></div></div>
-            <div class="hero-focus-node creator"><div><small>01 / MAKE</small><strong>青少年<br/>AI 创客</strong></div></div>
-            <div class="hero-focus-node content"><div><small>02 / NOTES</small><strong>内容<br/>创作</strong></div></div>
-            <div class="hero-focus-caption">NORTH STAR / 2026</div>
+          <h1 id="hero-title" class="mode-hidden" data-audience="work,en">有 AI 项目，<span class="accent">我们可以一起做。</span></h1>
+          <div class="hero-focus-map" data-audience="hi">
+            <h1 class="screen-reader-title">大风最近在做的三件事</h1>
+            <div class="focus-chart">
+              <svg viewBox="0 0 600 340" aria-hidden="true" focusable="false">
+                <defs>
+                  <pattern id="chart-paper" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <circle cx="12" cy="12" r=".9" fill="#8aa2af" opacity=".45"/>
+                  </pattern>
+                </defs>
+                <rect width="600" height="340" fill="url(#chart-paper)"/>
+                <g fill="none" stroke="#93a8af" opacity=".55">
+                  <path d="M24 38V24h14m524 0h14v14M24 302v14h14m524 0h14v-14"/>
+                  <path d="M54 116a120 120 0 0 1 190-25M62 243a118 118 0 0 0 129 46"/>
+                </g>
+                <g fill="none" stroke="#e9c58c" stroke-width="1.8">
+                  <path d="M262 175Q293 175 321 164"/>
+                  <path d="M321 164C351 157 357 111 395 105"/>
+                  <path d="M321 164C356 170 367 229 410 235"/>
+                </g>
+                <path d="M321 145l3.8 14.8 14.2 4.2-14.2 3.8L321 184l-4-16-14-4 14-4.2Z" fill="#eed098"/>
+              </svg>
+              <button type="button" class="focus-node build" aria-haspopup="dialog" aria-controls="recent-projects-dialog">
+                <strong><em>AI-native</em>产品开发</strong><small>看项目</small>
+              </button>
+              <button type="button" class="focus-node make" aria-haspopup="dialog" aria-controls="maker-home-dialog">
+                <strong>青少年<br>AI 创客</strong><small>看作品</small>
+              </button>
+              <button type="button" class="focus-node notes" aria-haspopup="dialog" aria-controls="channel-dialog">
+                <strong>内容创作</strong><small>慢游记</small>
+              </button>
+            </div>
           </div>
           <p class="hero-lead" id="hero-lead">
             本名熊云锋。平时做产品、写代码、跑项目，也会去线下活动认识新朋友。我把工作中的发现和踩过的坑写进「大风AI慢游记」。
@@ -1237,29 +1226,25 @@
       <div class="case-dialog-inner">
         <div class="channel-dialog-head">
           <div>
-            <div class="eyebrow">RECENT PROJECTS / 最近项目</div>
-            <h2 id="recent-projects-dialog-title">最近在推进的项目</h2>
-            <p>从系统搭建、产品开发到资源连接和课程研发，以下是当前持续积累的方向。</p>
+            <h2 id="recent-projects-dialog-title">最近的项目</h2>
           </div>
           <button class="channel-close" type="button" id="close-recent-projects" aria-label="关闭最近项目弹窗">×</button>
         </div>
 
         <div class="dialog-update" aria-label="项目更新信息">
           <time datetime="2026-11-25">更新时间：2026年11月25日</time>
-          <span>后续持续更新</span>
-          <span>公开项目与研发记录</span>
         </div>
 
         <section class="build-log" aria-labelledby="build-log-title">
-          <div class="build-log-head"><h3 id="build-log-title">近期新增 / Build Log</h3><span>NOW · 2026.11</span></div>
+          <h3 id="build-log-title">项目手记</h3>
           <ul class="build-log-list">
-            <li><b>首次 AI 出海产品上线</b><time datetime="2026-11-06">2026.11.06</time> · <a href="https://photogifmaker.com/" target="_blank" rel="noopener">Photo GIF Maker ↗</a>，从产品开发走到面向海外用户上线。</li>
-            <li><b>AI-native 密度开发</b>把 L1–L3 × A1–A3 方法论整理成可复用的开发流程与 Skill。</li>
-            <li><b>AI Creator 工作台</b>继续推进本地 v2.0，围绕作品、课程与家长沟通做产品化整理。</li>
-            <li><b>10月 AI 创客营</b>记录两天实践、MVP 与路演，把现场经验沉淀为可复用课程。</li>
-            <li><b>Codex Three-Provider Switcher</b><a href="https://github.com/Frog1205/codex-three-provider-switcher" target="_blank" rel="noopener">查看公开仓库 ↗</a></li>
-            <li><b>Claude Desktop Model Launcher</b><a href="https://github.com/Frog1205/claude-desktop-model-launcher" target="_blank" rel="noopener">查看公开仓库 ↗</a>（macOS 版本待实机验证）</li>
-            <li><b>Jev Cases</b><a href="https://github.com/Frog1205/jev-cases" target="_blank" rel="noopener">查看公开案例仓库 ↗</a></li>
+            <li><b>首次 AI 出海产品上线</b><span><time datetime="2026-11-06">2026.11.06</time> · <a href="https://photogifmaker.com/" target="_blank" rel="noopener">Photo GIF Maker ↗</a>，从产品开发走到面向海外用户上线。</span></li>
+            <li><b>AI-native 密度开发</b><span>把 L1–L3 × A1–A3 方法论整理成可复用的开发流程与 Skill。</span></li>
+            <li><b>AI Creator 工作台</b><span>继续推进本地 v2.0，围绕作品、课程与家长沟通做产品化整理。</span></li>
+            <li><b>10月 AI 创客营</b><span>记录两天实践、MVP 与路演，把现场经验沉淀为可复用课程。</span></li>
+            <li><b>Codex Three-Provider Switcher</b><span><a href="https://github.com/Frog1205/codex-three-provider-switcher" target="_blank" rel="noopener">查看公开仓库 ↗</a></span></li>
+            <li><b>Claude Desktop Model Launcher</b><span><a href="https://github.com/Frog1205/claude-desktop-model-launcher" target="_blank" rel="noopener">查看公开仓库 ↗</a>（macOS 版本待实机验证）</span></li>
+            <li><b>Jev Cases</b><span><a href="https://github.com/Frog1205/jev-cases" target="_blank" rel="noopener">查看公开案例仓库 ↗</a></span></li>
           </ul>
         </section>
 
@@ -1764,49 +1749,17 @@
 
     modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.modeButton)));
 
-    const channelDialog = document.getElementById('channel-dialog');
-    const openChannels = document.getElementById('open-channels');
-    const closeChannels = document.getElementById('close-channels');
-
-    openChannels.addEventListener('click', () => channelDialog.showModal());
-    closeChannels.addEventListener('click', () => channelDialog.close());
-    channelDialog.addEventListener('click', event => {
-      if (event.target === channelDialog) channelDialog.close();
+    document.querySelectorAll('button[aria-haspopup="dialog"][aria-controls]').forEach(button => {
+      const dialog = document.getElementById(button.getAttribute('aria-controls'));
+      button.addEventListener('click', () => dialog.showModal());
     });
-    channelDialog.addEventListener('close', () => openChannels.focus());
 
-    const toolFrogDialog = document.getElementById('tool-frog-dialog');
-    const openToolFrog = document.getElementById('open-tool-frog');
-    const closeToolFrog = document.getElementById('close-tool-frog');
-
-    openToolFrog.addEventListener('click', () => toolFrogDialog.showModal());
-    closeToolFrog.addEventListener('click', () => toolFrogDialog.close());
-    toolFrogDialog.addEventListener('click', event => {
-      if (event.target === toolFrogDialog) toolFrogDialog.close();
+    document.querySelectorAll('dialog').forEach(dialog => {
+      dialog.querySelector('.channel-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => {
+        if (event.target === dialog) dialog.close();
+      });
     });
-    toolFrogDialog.addEventListener('close', () => openToolFrog.focus());
-
-    const makerHomeDialog = document.getElementById('maker-home-dialog');
-    const openMakerHome = document.getElementById('open-maker-home');
-    const closeMakerHome = document.getElementById('close-maker-home');
-
-    openMakerHome.addEventListener('click', () => makerHomeDialog.showModal());
-    closeMakerHome.addEventListener('click', () => makerHomeDialog.close());
-    makerHomeDialog.addEventListener('click', event => {
-      if (event.target === makerHomeDialog) makerHomeDialog.close();
-    });
-    makerHomeDialog.addEventListener('close', () => openMakerHome.focus());
-
-    const recentProjectsDialog = document.getElementById('recent-projects-dialog');
-    const openRecentProjects = document.getElementById('open-recent-projects');
-    const closeRecentProjects = document.getElementById('close-recent-projects');
-
-    openRecentProjects.addEventListener('click', () => recentProjectsDialog.showModal());
-    closeRecentProjects.addEventListener('click', () => recentProjectsDialog.close());
-    recentProjectsDialog.addEventListener('click', event => {
-      if (event.target === recentProjectsDialog) recentProjectsDialog.close();
-    });
-    recentProjectsDialog.addEventListener('close', () => openRecentProjects.focus());
 
     navLinks.forEach(link => link.addEventListener('click', event => {
       const targetMode = link.dataset.targetMode;
